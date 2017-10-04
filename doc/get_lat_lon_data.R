@@ -4,7 +4,7 @@ rest_data<-read.csv("../DOHMH_New_York_City_Restaurant_Inspection_Results.csv",a
 loc_rest<-paste(rest_data$BUILDING,rest_data$STREET,"NYC",sep  = " ")
 names(loc_rest)<-1:ncol(rest_data)
 
-#choose the start and end you want, don't set a very long time, you might hit the data limits
+#choose the start and end you want, don't set a very long lenth, you might hit the data limits
 start=6001
 end=6500
 #in case of changing the original data
