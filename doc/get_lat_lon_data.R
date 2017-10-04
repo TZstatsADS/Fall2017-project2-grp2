@@ -1,22 +1,20 @@
 library(ggmap)
 library('readr')
-rest_data<-read.csv("../DOHMH_New_York_City_Restaurant_Inspection_Results.csv",as.is = F)
-loc_rest<-paste(rest_data$BUILDING,rest_data$STREET,"NYC",sep  = " ")
-names(loc_rest)<-1:ncol(rest_data)
+loc_index<-read.csv("../loc_index.csv",as.is = F)
 
-#choose the start and end you want, don't set a very long lenth, you might hit the data limits
-start=6001
-end=6500
+#choose the start and end you want, don't set a very long time, you might hit the data limits
+#i have already done the first 6000 rows, check the index where the NAs starts
+min(which(is.na(loc_index$lat)))
+
+start=5624
+end=6000
+
 #in case of changing the original data
-df<-rest_data[start:end,]
-df$lon<-NA
-df$lat<-NA
-df$addr<-NA
-
+df<-loc_index[start:end,]
 
 for(i in start:end){
   print(i)
-  df[i,c("lon","lat")]<-geocode(loc_rest[i])
+  df[i,c("lon","lat")]<-geocode(loc_index$loc[i])
   if(is.na(df[i,"lat"])){print("NA")}
 }
 
@@ -25,11 +23,11 @@ for(i in start:end){
 while(sum(is.na(df$lat))>0){
   for(i in which(is.na(df$lat))){
     print(i)
-    df[i,c("lon","lat")]<-geocode(loc_rest[i])
+    df[i,c("lon","lat")]<-geocode(loc_index$loc[i])
     if(is.na(df[i,"lat"])){print("NA")}
   }
 }
 #after you have done with this, save the df as a csv
-write.csv(df[start:end],paste("../df",start,"_",end,".csv",sep = ""))
+write.csv(df,paste("../df",start,"_",end,".csv",sep = ""))
 
 
