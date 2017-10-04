@@ -1,13 +1,13 @@
-library(ggmap)
-library('readr')
-loc_index<-read.csv("../loc_index.csv",as.is = F)
+library('ggmap')
+#library('readr')
+loc_index<-read.csv("../data/loc_index.csv",as.is = F)
 
 #choose the start and end you want, don't set a very long time, you might hit the data limits
 #i have already done the first 6000 rows, check the index where the NAs starts
 min(which(is.na(loc_index$lat)))
 
-start=5624
-end=6000
+start=6000
+end=7000
 
 #in case of changing the original data
 df<-loc_index[start:end,]
