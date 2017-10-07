@@ -1,13 +1,24 @@
-library("xlsx")
+
 library("plotly")
 library("dplyr")
 library('RColorBrewer')
 
-HS_frame<-read.xlsx("~/Desktop/[ADS]Advanced Data Science/Fall2017-project2-grp2/data/2014_2015_HS_SQR_Results_2016_01_07.xlsx",sheetName = "Framework",header = T)
-col<-apply(HS_frame[1,],2,as.character)
-HS_frame<-HS_frame[2:1254,]
-colnames(HS_frame)<-col
-HS_frame<-HS_frame%>%filter(!is.na(`School Name`))
+#write.csv(HS_frame,"~/Desktop/HS_frame.csv")
+HS_frame<-read.csv("../data/HS_frame.csv",as.is = F)
+HS_frame$School.Name<-as.character(HS_frame$School.Name)
+# HS_frame<-HS_frame[2:1254,]
+# colnames(HS_frame)<-col
+# HS_frame<-HS_frame%>%filter(!is.na(`School Name`))
+
+Aspects<-list(
+  'Rigorous Instruction Rating'=1:16,	
+  'Collaborative Teachers Rating'=c(1,2,17:28),	
+  'Supportive Environment Rating'=c(1,2,29:49),
+  'Effective School Leadership Rating'=c(1,2,50:60),
+  'Strong Family-Community Ties Rating'=c(1,2,61:71),
+  'Trust Rating'=c(1,2,72:89)
+)
+
 Rigorous_instruction<-HS_frame[,1:16]#3:16
 Collaborative_Teacher<-HS_frame[,c(1,2,17:28)]
 Supportive_env<-HS_frame[,c(1,2,29:49)]
@@ -16,20 +27,22 @@ Fam_Sch_Tie<-HS_frame[,c(1,2,61:71)]
 Trust<-HS_frame[,c(1,2,72:89)]
 rm(HS_frame)
 
+
+
 plot_scores<-function(df,school_name){
   colnames(df)[3:4]<-c("rating","ele_score")
   df[,4]<-as.numeric(as.vector(df[,4]))
-  s_i=df[df$`School Name`==school_name,"ele_score"]
+  s_i=df[df$School.Name==school_name,"ele_score"]
   if(is.na(s_i)){
     return(paste("No data for this school"))
   }
   df<-df%>%filter(!is.na(ele_score))
   
   h_i=round(sum(df$ele_score<s_i)/nrow(df),2)
-  r_i=df[df$`School Name`==school_name,"rating"]
+  r_i=df[df$School.Name==school_name,"rating"]
   #m<-mean(df$ele_score)
   rank_i=nrow(df)-rank(df$ele_score)
-  rank_i=paste(rank_i[which(df$`School Name`==school_name)],"/",nrow(df),sep = "")
+  rank_i=paste(rank_i[which(df$School.Name==school_name)],"/",nrow(df),sep = "")
   
   col=alpha(brewer.pal(8, "Set2"))[3:8]
   den<-density(df$ele_score,na.rm = T)
@@ -61,5 +74,5 @@ plot_scores<-function(df,school_name){
   
 }  
 
-plot_scores(Leadership,Leadership$`School Name`[450])
+plot_scores(Leadership,Leadership$School.Name[30])
 
