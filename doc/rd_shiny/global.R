@@ -2,7 +2,7 @@ library("xlsx")
 library("plotly")
 library("dplyr")
 
-HS_frame<-read.xlsx("D:/3rd Semester/GR5243 Applied Data Science/proj 2/2014_2015_HS_SQR_Results_2016_01_07.xlsx",sheetName = "Framework",header = T)
+HS_frame<-read.xlsx("~/Desktop/[ADS]Advanced Data Science/Fall2017-project2-grp2/data/2014_2015_HS_SQR_Results_2016_01_07.xlsx",sheetName = "Framework",header = T)
 col<-apply(HS_frame[1,],2,as.character)
 HS_frame<-HS_frame[2:1254,]
 colnames(HS_frame)<-col
