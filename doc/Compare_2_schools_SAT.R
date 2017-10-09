@@ -9,9 +9,10 @@ SAT_HS<-read.csv("../Fall2017-project2-grp2/data/SAT_HS.csv")
 SAT_HS<-Del_blank_row(SAT_HS)
 SAT_HS<-SAT_HS%>%
   select(School.Name,Average.Score.SAT.Math,Average.Score.SAT.Writing,Average.Score.SAT.Critical.Reading)
+
 rownames(SAT_HS)<-as.vector(SAT_HS$School.Name)
 SAT_HS$School.Name<-c()
-colnames(SAT_HS)<-c("Math","Writing","Critical Reading")
+colnames(SAT_HS)<-c("Math","Writing","Reading")
 SAT_HS<-SAT_HS[-which(apply(apply(SAT_HS,1,is.na),2,all)),]
 tidysat <- SAT_HS %>% 
   rownames_to_column("Name") %>% 
