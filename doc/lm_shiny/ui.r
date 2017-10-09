@@ -17,14 +17,14 @@ sidebar <- dashboardSidebar()
 
 body <- dashboardBody(
   fluidRow(
-    box(width = 12,
-        title="How do the survey results relate to the graduation rate & college enrollment rate?")
+    box(width = 12,status = "warning",
+        title=h2("How do the survey results relate to the graduation rate & college enrollment rate?"))
   ),
   fluidRow(
     box(width=6, 
         selectInput(inputId = "y", label = "Y axis: Please select graduation rate or college enrollment rate.",
-                    choices = list("Graduate_Pct",
-                                   "Postsecondary_Enrollment_Pct"), 
+                    choices = list("Graduation Rate, 4 year" = "Graduate_Pct",
+                                   "Postsecondary Enrollment Rate, 6 months After High School"="Postsecondary_Enrollment_Pct"), 
                     selected = "Graduate_Pct", multiple=FALSE)
     ),
     box(width=6,
@@ -88,7 +88,7 @@ body <- dashboardBody(
                                                     "% of students who say that teachers treat them with respect"=5), 
                                      selected = 1, multiple=FALSE)
         )
-        )#box
+    )#box
   ),
   fluidRow(
     column(width=9,
@@ -98,13 +98,13 @@ body <- dashboardBody(
            infoBoxOutput(width = NULL, outputId = "y_value"),
            infoBoxOutput(width = NULL, outputId = "x_value"),
            infoBoxOutput(width = NULL, outputId = "additional_info")
-           )
-    ),
+    )
+  ),
   fluidRow(
     valueBoxOutput(outputId= "significance", width=12)
   )
 )   
-  
+
 
 shinyUI(dashboardPage(header, sidebar, body))
 
