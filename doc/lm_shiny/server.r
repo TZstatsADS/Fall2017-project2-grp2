@@ -96,19 +96,6 @@ leadership.df <- merge(x = achievements, y = leadership.df, by = "SchoolName", a
 community.df <- merge(x = achievements, y = community.df, by = "SchoolName", all.x = TRUE)
 trust.df <- merge(x = achievements, y = trust.df, by = "SchoolName", all.x = TRUE)
 
-#paste(colnames(rigorous.df)[4:10], collapse = "`+`")
-
-df=rigorous.df
-y_string="Graduate_Pct"
-x_string="Score"
-formula <- paste(y_string, "~", x_string)
-fit = lm(formula, data=df, na.action = na.exclude)
-summary(fit)$residuals
-
-names(summary(fit))
-names(fit)
-fit$coefficients
-fit$fitted.values
 
 #######################
 ### Server
