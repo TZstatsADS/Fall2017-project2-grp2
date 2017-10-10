@@ -48,11 +48,12 @@ function(input, output, session) {
       leaflet(df_new)%>%
         addTiles()%>%
         addCircles(~lon, ~lat,popup=labels,label=~school.name,radius=~Enrollment/10,options=marker_opt,color="green",layerId=~school.name)%>%
-        setView(-73.983,40.7639,zoom = 11)
+        setView(-73.983,40.7639,zoom = 12)
     }else{
       leaflet(df_new)%>%
         addTiles()%>%
-        addCircles(~lon, ~lat,popup=labels,label=~school.name,radius=~Enrollment/10,options=marker_opt,color="green",layerId=~school.name)
+        addCircles(~lon, ~lat,popup=labels,label=~school.name,radius=~Enrollment/10,group=~borough,options=marker_opt,color="green",layerId=~school.name)%>%
+        addProviderTiles(input$map_color)
     }
   })
   
@@ -68,10 +69,10 @@ function(input, output, session) {
     eventid<-input$School1
     if(eventid!=" "){
       if(!input$label_it){
-        leafletProxy("map") %>%clearMarkers()%>%clearShapes()}
+        leafletProxy("map") %>%clearMarkers()}
       df_target<-data_merge%>%filter(school.name==eventid)
       label_i<-labels_all[data_merge$school.name==input$School1]
-      leafletProxy("map") %>%addMarkers(df_target$lon,df_target$lat,popup=label_i)%>%
+      leafletProxy("map") %>%addMarkers(df_target$lon,df_target$lat,popup=label_i,layerId=df_target$school.name)%>%
         setView(df_target$lon,df_target$lat,zoom=13)
       
       showratings(eventid)
@@ -83,11 +84,16 @@ function(input, output, session) {
       show_disa(eventid)
       show_learner(eventid)
       show_schoolname(eventid)
-      show_sat(eventid)}
+      show_sat(eventid)
+      show_schoolname_tab_details(eventid)
+      show_ranks(eventid)
+      #show_rating4search(eventid)
+      }
+      
   })
   
+  
   observe({
-    
     event <- input$map_shape_click
     if (is.null(event))
       return()
@@ -103,29 +109,73 @@ function(input, output, session) {
       show_learner(event$id)
       show_schoolname(event$id)
       show_sat(event$id)
+      show_rating_hist(event$id)
+      show_schoolname_tab_details(event$id)
+      show_ranks(event$id)
     })
   })
   
-  # observe({
-  #   
-  #   event <- input$map_marker_click
-  #   if (is.null(event))
-  #     return()
-  #   
-  #   isolate({
-  #     output$hah<-renderText("haha",paste0(event$id,event$lat))
-  # showratings(event$id)
-  # show_races(event$id)
-  # show_6_m(event$id)
-  # show_18_m(event$id)
-  # show_teacher(event$id)
-  # show_eco(event$id)
-  # show_disa(event$id)
-  # show_learner(event$id)
-  # show_schoolname(event$id)
-  # show_sat(event$id)
-  #   })
-  # })
+  observe({
+    event <- input$map_marker_click
+    if (is.null(event))
+      return()
+    print(event)
+    isolate({
+      showratings(event$id)
+      show_races(event$id)
+      show_6_m(event$id)
+      show_18_m(event$id)
+      show_teacher(event$id)
+      show_eco(event$id)
+      show_disa(event$id)
+      show_learner(event$id)
+      show_schoolname(event$id)
+      show_sat(event$id)
+      show_rating_hist(event$id)
+      show_schoolname_tab_details(event$id)
+      show_ranks(event$id)
+    })
+  })
+  
+  
+  output$plot=renderPlotly({
+    make_radar(input$radar_school1,input$radar_school2)
+  })
+  
+  #show the ui text
+  showratings<-function(School.name){
+    target_df<-data_merge%>%filter(school.name==School.name)
+    if(is.null(target_df)) {
+      return()
+    }
+    output$ratings<-renderUI({
+      sprintf(
+        "%s <strong><font size=3 color=\"#5c5c5c\" style=\"Monospace\">Summary</font></strong><br/>
+        <span style=\"width:10em; height:0.1em; background-color:#3d3d3d; display:inline-block;\"></span><br/>
+        <span style=\"width:0.5em; height:0.5em; background-color:#8b2323; display:inline-block;\"></span>
+        <font color=\"#8b2323\">Rigorous Instruction</font>: <br/>%s %s<br/>
+        <span style=\"width:0.5em; height:0.5em; background-color:#458b00; display:inline-block;\"></span>
+        <font color=\"#458b00\">Collaborative Teaching</font>: <br/>%s %s<br/>
+        <span style=\"width:0.5em; height:0.5em; background-color:#cd9b1d; display:inline-block;\"></span>
+        <font color=\"#cd9b1d\">Supportive Environment</font>: <br/>%s %s<br/>
+        <span style=\"width:0.5em; height:0.5em; background-color:#68228b; display:inline-block;\"></span>
+        <font color=\"#68228b\">Effective School Leadership</font>: <br/>%s %s<br/>
+        <span style=\"width:0.5em; height:0.5em; background-color:#104e8b; display:inline-block;\"></span>
+        <font color=\"#104e8b\">Strong Family Community Tie</font>: <br/>%s %s<br/>
+        <span style=\"width:0.5em; height:0.5em; background-color:#698b69; display:inline-block;\"></span>
+        <font color=\"#698b69\">Trust</font>: <br/>%s %s",
+        icon("file-text-o"),
+        target_df$Rigorous.Instruction.Rating,icon_list[target_df$Rigorous.Instruction.Rating][[1]],
+        target_df$Collaborative.Teachers.Rating,icon_list[target_df$Collaborative.Teachers.Rating][[1]],
+        target_df$Supportive.Environment.Rating,icon_list[target_df$Supportive.Environment.Rating][[1]],
+        target_df$Effective.School.Leadership.Rating,icon_list[target_df$Effective.School.Leadership.Rating][[1]],
+        target_df$Strong.Family.Community.Ties.Rating,icon_list[target_df$Strong.Family.Community.Ties.Rating][[1]],
+        target_df$Trust.Rating,icon_list[target_df$Trust.Rating][[1]]
+      ) %>% lapply(htmltools::HTML)
+    })
+  }
+  
+  
   
   ###Summary Functions
   show_sat<-function(School.name){
@@ -141,7 +191,7 @@ function(input, output, session) {
         )
         plot_ly(df)%>%layout(xaxis = ax,yaxis =ax)
       }else{
-      sat_plot(School.name)
+        sat_plot(School.name)
       }
     })
     
@@ -328,38 +378,7 @@ function(input, output, session) {
           yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),margin=m)
     })
   }
-  #show the ui text
-  showratings<-function(School.name){
-    target_df<-data_merge%>%filter(school.name==School.name)
-    if(is.null(target_df)) {
-      return()
-    }
-    output$ratings<-renderUI({
-      sprintf(
-        "%s <strong><font size=3 color=\"#5c5c5c\" style=\"Monospace\">Summary</font></strong><br/>
-      
-      <span style=\"width:0.5em; height:0.5em; background-color:#8b2323; display:inline-block;\"></span>
-      <font color=\"#8b2323\">Rigorous Instruction</font>: <br/>%s %s<br/>
-      <span style=\"width:0.5em; height:0.5em; background-color:#458b00; display:inline-block;\"></span>
-      <font color=\"#458b00\">Collaborative Teaching</font>: <br/>%s %s<br/>
-      <span style=\"width:0.5em; height:0.5em; background-color:#cd9b1d; display:inline-block;\"></span>
-      <font color=\"#cd9b1d\">Supportive Environment</font>: <br/>%s %s<br/>
-      <span style=\"width:0.5em; height:0.5em; background-color:#68228b; display:inline-block;\"></span>
-      <font color=\"#68228b\">Effective School Leadership</font>: <br/>%s %s<br/>
-      <span style=\"width:0.5em; height:0.5em; background-color:#104e8b; display:inline-block;\"></span>
-      <font color=\"#104e8b\">Strong Family Community Tie</font>: <br/>%s %s<br/>
-      <span style=\"width:0.5em; height:0.5em; background-color:#698b69; display:inline-block;\"></span>
-      <font color=\"#698b69\">Trust</font>: <br/>%s %s",
-        icon("file-text-o"),
-        target_df$Rigorous.Instruction.Rating,icon_list[target_df$Rigorous.Instruction.Rating][[1]],
-        target_df$Collaborative.Teachers.Rating,icon_list[target_df$Collaborative.Teachers.Rating][[1]],
-        target_df$Supportive.Environment.Rating,icon_list[target_df$Supportive.Environment.Rating][[1]],
-        target_df$Effective.School.Leadership.Rating,icon_list[target_df$Effective.School.Leadership.Rating][[1]],
-        target_df$Strong.Family.Community.Ties.Rating,icon_list[target_df$Strong.Family.Community.Ties.Rating][[1]],
-        target_df$Trust.Rating,icon_list[target_df$Trust.Rating][[1]]
-      ) %>% lapply(htmltools::HTML)
-    })
-  }
+  
   
   output$explain<-renderUI({
     sprintf(
@@ -371,63 +390,122 @@ function(input, output, session) {
   })
   
   
-  output$Boro_1<-renderUI({selectInput('Boro1',strong(icon("map-pin"),'Borough'),c(" ",unique(data_merge$borough)),selected = " ")})
+  output$Boro_1<-renderUI({selectInput('Boro1',strong(icon("map-pin"),'Select a Borough'),c(" ",unique(data_merge$borough)),selected = " ")})
   output$School_1<-renderUI({
     if (is.null(input$Boro1) || input$Boro1 == " "){
       selectInput('School1',strong(icon("university"),'Select a School'),c(" ",as.character(data_merge$school.name)),selected = " ")
     }else selectInput("School1", 
-                      "Select a School", 
+                      strong(icon("university"),'Select a School'), 
                       c(unique(as.character(data_merge$school.name)[data_merge$borough==input$Boro1])," "),
                       " ")
   })
   
   
-  ################3Second Tab for hist plot
+  ################Second Tab for hist plot
   selectedData<-reactive({
     HS_frame[,Aspects[input$aspect][[1]]]
   })
   
-  output$hist_School<-renderUI({
-    if(is.na(selectedData()[selectedData()$School.Name==input$school_name2,4])){
-      sprintf("<strong><font color=\"#1a1a1a\" size=6> %s Sorry! No <font color=\"#8b1a1a\">%s</font> Data For This School",icon("exclamation-triangle"),input$aspect)%>%lapply(htmltools::HTML)
-    }else{
-      sprintf(
-        "<strong><font color=\"#1a1a1a\" size=6>%s %s</font>",icon("bookmark-o"),input$school_name2)%>%lapply(htmltools::HTML)
-    }})
+  show_schoolname_tab_details<-function(School.Name){
+    output$hist_School<-renderUI({
+      if(is.na(selectedData()[selectedData()$School.Name==School.Name,4])){
+        sprintf("<strong><font color=\"#1a1a1a\" size=6> %s Sorry! No <font color=\"#8b1a1a\">%s</font> Data For This School",icon("University"),input$aspect)%>%lapply(htmltools::HTML)
+      }else{
+        sprintf(
+          "<strong><font color=\"#1a1a1a\" size=6>%s %s</font>",icon("bookmark-o"),School.Name)%>%lapply(htmltools::HTML)
+      }})}
   
-  output$rating_hist <- renderPlotly({
-    #plot_scores(selectedData(),input$school_name,input$aspect)
-    if(is.na(selectedData()[selectedData()$School.Name==input$school_name2,4])){
-      plot_ly(x=selectedData()[,4],type = "histogram")
-    }else{
-      plot_scores(selectedData(),input$school_name2,input$aspect)
+  observeEvent(input$school_name2,{
+    eventid<-input$school_name2
+    #show_schoolname_tab_details(eventid)
+    if(eventid!=" "){
+      show_rating_hist(eventid)
+      show_schoolname_tab_details(eventid)
+      show_ranks(eventid)
     }
+  })
+  observeEvent(input$aspect,{
+    eventid<-input$school_name2
+    #show_schoolname_tab_details(eventid)
+    if(eventid!=" "){
+      show_rating_hist(eventid)
+      show_schoolname_tab_details(eventid)
+      show_ranks(eventid)
+    }
+  })
+  
+  show_rating_hist<-function(School.Name){
+    output$rating_hist <- renderPlotly({
+      #plot_scores(selectedData(),input$school_name,input$aspect)
+      if(is.na(selectedData()[selectedData()$School.Name==School.Name,4])){
+        plot_ly(x=selectedData()[,4],type = "histogram")
+      }else{
+        plot_scores(selectedData(),School.Name,input$aspect)
+      }
+    })
+  }
+  
+  show_ranks<-function(School.Name){
+    ranks_data<-cal_values(selectedData(),School.Name)
+    output$Rank <- renderValueBox({
+      valueBox(
+        ranks_data[1],"Rank" , icon = icon("list"),
+        color = "purple",width=3
+      )
+    })
+    output$Rank_city <- renderValueBox({
+      valueBox(
+        ranks_data[2],"City Level" , icon = icon("building-o"),
+        color = "blue",width=3
+      )
+    })
+    output$Rank_boro <- renderValueBox({
+      valueBox(
+        ranks_data[3],"Borough Level" , icon = icon("bicycle"),
+        color = "yellow",width=3
+      )
+    })
     
-  })
+  }
   
-  ###make the value boxes
-  ranks_data<-reactive({
-    cal_values(selectedData(),input$school_name2)
+  ####second part for the search tab
+  selectedData1<-reactive({
+    HS_frame[,Aspects[input$aspect1][[1]]]
   })
+  show_rating4search<-function(School.Name){
+    output$rating_hist1 <- renderPlotly({
+      #plot_scores(selectedData(),input$school_name,input$aspect)
+      if(is.na(selectedData1()[selectedData1()$School.Name==School.Name,4])){
+        plot_ly(x=selectedData1()[,4],type = "histogram")
+      }else{
+        plot_scores(selectedData1(),School.Name,input$aspect1)
+      }
+      
+    })
+    ranks_data1<-cal_values(selectedData1(),School.Name)
+    output$Rank1 <- renderValueBox({
+      valueBox(
+        ranks_data1[1],"Rank" , icon = icon("list"),
+        color = "purple",width=3
+      )
+    })
+    output$Rank_city1 <- renderValueBox({
+      valueBox(
+        ranks_data1[2],"City Level" , icon = icon("building-o"),
+        color = "blue",width=3
+      )
+    })
+    output$Rank_boro1 <- renderValueBox({
+      valueBox(
+        ranks_data1[3],"Borough Level" , icon = icon("bicycle"),
+        color = "yellow",width=3
+      )
+    })
+    
+    
+  }
   
-  output$Rank <- renderValueBox({
-    valueBox(
-      ranks_data()[1],"Rank" , icon = icon("list"),
-      color = "purple",width=3
-    )
-  })
-  output$Rank_city <- renderValueBox({
-    valueBox(
-      ranks_data()[2],"City Level" , icon = icon("building-o"),
-      color = "blue",width=3
-    )
-  })
-  output$Rank_boro <- renderValueBox({
-    valueBox(
-      ranks_data()[3],"Borough Level" , icon = icon("bicycle"),
-      color = "yellow",width=3
-    )
-  })
+  
   
   
   

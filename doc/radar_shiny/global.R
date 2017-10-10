@@ -2,18 +2,19 @@ library("xlsx")
 library("plotly")
 library("dplyr")
 
-HS_frame<-read.xlsx("D:/3rd Semester/GR5243 Applied Data Science/proj 2/2014_2015_HS_SQR_Results_2016_01_07.xlsx",sheetName = "Framework",header = T)
-col<-apply(HS_frame[1,],2,as.character)
-HS_frame<-HS_frame[2:1254,]
-colnames(HS_frame)<-col
-HS_frame<-HS_frame%>%filter(!is.na(`School Name`))
+# HS_frame<-read.xlsx("D:/3rd Semester/GR5243 Applied Data Science/proj 2/2014_2015_HS_SQR_Results_2016_01_07.xlsx",sheetName = "Framework",header = T)
+# col<-apply(HS_frame[1,],2,as.character)
+# HS_frame<-HS_frame[2:1254,]
+# colnames(HS_frame)<-col
+# HS_frame<-HS_frame%>%filter(!is.na(`School Name`))
+HS_frame<-read.csv("~/Desktop/[ADS]Advanced Data Science/Fall2017-project2-grp2/data/HS_frame.csv")
 Rigorous_instruction<-HS_frame[,1:16]#3:16
 Collaborative_Teacher<-HS_frame[,c(1,2,17:28)]
 Supportive_env<-HS_frame[,c(1,2,29:49)]
 Leadership<-HS_frame[,c(1,2,50:60)]
 Fam_Sch_Tie<-HS_frame[,c(1,2,61:71)]
 Trust<-HS_frame[,c(1,2,72:89)]
-rm(HS_frame)
+#rm(HS_frame)
 
 options(digits=3)
 rigo<-as.numeric(as.vector(Rigorous_instruction[,4]))
@@ -52,4 +53,5 @@ df$o2 <- 0.4 * sin(df$degree * pi / 180) # 40% ring x
 df$a2 <- 0.4 * cos(df$degree * pi / 180) # 40% ring y
 df$o1 <- 0.2 * sin(df$degree * pi / 180) # 20% ring x
 df$a1 <- 0.2 * cos(df$degree * pi / 180) # 20% ring y
+
 

@@ -1,5 +1,4 @@
 
-
 header <- dashboardHeader(
   title = "High Schools in NYC"
 )
@@ -8,46 +7,43 @@ header <- dashboardHeader(
 sidebar <- dashboardSidebar(
   sidebarMenu(
     menuItem("Schools Map", tabName = "Schools_Map", icon = icon("map")),
-    menuItem("6 RATINGS", icon = icon("th"), tabName = "6ratings",
-             badgeLabel = "haha", badgeColor = "green"),
-    menuItem("Compare 2 Schools", icon = icon("th"), tabName = "Compare",
+    # menuItem("6 RATINGS", icon = icon("th"), tabName = "6ratings",
+    #          badgeLabel = "haha", badgeColor = "green"),
+    menuItem("Compare 2 Schools", icon = icon("balance-scale"), tabName = "Compare",
              badgeLabel = "haha", badgeColor = "green")
   )
 )
 
 body <- dashboardBody(
-  #tags$head(includeCSS("styles.css")),
+  tags$head(
+    tags$link(rel = "stylesheet", type = "text/css", href = "custom.css")
+  ),
   tabItems(
     
     tabItem(tabName = "Schools_Map",
             fluidRow(
-              column(width = 9,
-                     box(width = NULL, solidHeader = TRUE,
-                         leafletOutput("map", height = 590)
-                     )
-              )
-              ,
-              column(width = 3,
-                     box(width = NULL, status = "warning",
+              column(width=2,
+                     box(width = NULL,
                          
                          selectInput("map_color", "Map Color Theme", 
-                                     choices=c("Original"="OpenStretMap.HOT", "Green & Blue"="Hydda.Full","Black & White"="Stamen.TonerLite")
+                                     choices=c("Original"="OpenStretMap.France", "Green & Blue"="Hydda.Full","Black & White"="Stamen.TonerLite")
                                      ,selected = "Original"),
                          hr(),
                          selectInput("Zipcode", "Zipcode:",
                                      choices = c("All",sort(unique(data_merge$zipcode)))
                          ),
                          checkboxInput("Near", "Show Schools in the nearby area",T),
-                         
+                         hr(),
                          sliderInput("Enroll",
                                      "Number of Students:",
-                                     min = 1,  max = 5500, value = c(0,5500))
-                         
-                         ,
-                         
-                         uiOutput("ratings")
-                     )
-                     
+                                     min = 1,  max = 5500, value = c(0,5500)))
+              ),
+              column(width = 8,
+                     div(leafletOutput("map", height = 370))
+              )
+              ,
+              column(width = 2.5,
+                     uiOutput("ratings")
               )),
             tabsetPanel(id="SummaryTabSet",
                         tabPanel("Main",value="MapSetting",
@@ -64,13 +60,13 @@ body <- dashboardBody(
                                                 )
                                          ),
                                          column(width =3,
-                                                box(title=strong(icon("graduation-cap"),"Post-Secondary Status-6 Month"),width=NULL,status = "success",solidHeader = T,
+                                                box(title=strong(icon("graduation-cap"),"6 Months After Grad"),width=NULL,status = "success",solidHeader = T,
                                                     plotlyOutput("show_6_m",height = 200)
                                                 )
                                          ),
                                          column(width =3,
                                                 
-                                                box(title=strong(icon("graduation-cap"),"Post-Secondary Status-18 Month"),width=NULL,status = "success",solidHeader = T,
+                                                box(title=strong(icon("graduation-cap"),"18 Months After Grad"),width=NULL,status = "success",solidHeader = T,
                                                     plotlyOutput("show_18_m",height = 200))
                                                 
                                          ),
@@ -108,10 +104,13 @@ body <- dashboardBody(
                                                 )
                                          )
                                        ),
-                                       fluidRow(box(width = 12,uiOutput("explain"),background = "olive"))
+                                       fluidRow(box(width = 12,background = "olive",p(icon("dollar"),ECON_EXPLAIN)))
                                        
                                        
                                    ))),
+                        
+                        
+                        ##the 2nd Tab
                         tabPanel("Search Your School",value="Search",
                                  fluidRow(
                                    box(width = 12,column(width=6,uiOutput("Boro_1")),
@@ -127,13 +126,13 @@ body <- dashboardBody(
                                           )
                                    ),
                                    column(width =3,
-                                          box(title=strong(icon("graduation-cap"),"Post-Secondary Status-6 Month"),width=NULL,status = "success",
+                                          box(title=strong(icon("graduation-cap"),"6 Months After Grad"),width=NULL,status = "success",
                                               plotlyOutput("show_6_m1",height = 250)
                                           )
                                    ),
                                    column(width =3,
                                           
-                                          box(title=strong(icon("graduation-cap"),"Post-Secondary Status-18 Month"),width=NULL,status = "success",
+                                          box(title=strong(icon("graduation-cap"),"18 Months After Grad"),width=NULL,status = "success",
                                               plotlyOutput("show_18_m1",height = 250))
                                           
                                    ),
@@ -148,7 +147,7 @@ body <- dashboardBody(
                                  fluidRow(
                                    column(width = 3,
                                           
-                                          box(title=strong(icon("users"),"Teachers Experience"),width=NULL,status = ,solidHeader = F,
+                                          box(title=strong(icon("users"),"Teachers Experience"),width=NULL,solidHeader = T,
                                               #plotlyOutput("Teacher",height = 200)
                                               valueBoxOutput('Teacher1',width = NULL)
                                           )),
@@ -172,40 +171,67 @@ body <- dashboardBody(
                                           )
                                    )
                                  ),
-                                 fluidRow(box(width = 12,uiOutput("explain1"),background = "olive"))
+                                 fluidRow(box(width = 12,p(icon("dollar"),ECON_EXPLAIN),background = "olive"))
+                                 
+                        ),
+                        #The 3rd tab
+                        tabPanel(p("Details for", icon("file-text-o"),"Summary Items"),value="details for aspects",
+                                 fluidRow(
+                                   
+                                   box(width=NULL,
+                                       column(width=6,selectInput('aspect', strong(icon("search"),'Select a Item'),names(Aspects),
+                                                   selected=names(Aspects)[1]))
+                                       #)
+                                       ,
+                                   #box(width = 6,status = "warning",
+                                   column( width=6,   
+                                   selectInput('school_name2', strong(icon("university"),'Select a School'),c(HS_frame$School.Name," "),selected = " ")
+                                       ))
+                                   
+                                 ),
+                                 fluidRow(box(width = 12,status = "danger",uiOutput("hist_School"))),
+                                 fluidRow(
+                                   column(width =8,
+                                          box(width = NULL,
+                                              plotlyOutput('rating_hist')))
+                                   ,
+                                   # column(width =NULL,
+                                   column(width =4,    
+                                          valueBoxOutput('Rank',width = NULL),
+                                          
+                                          box(width = NULL,title=strong(icon("thumbs-up"),"Positive Responses% on Survey"),
+                                              valueBoxOutput('Rank_city',width = NULL),
+                                              valueBoxOutput('Rank_boro',width = NULL))
+                                   )
+                                   #valueBox(verbatimTextOutput("Rank"), "Rank", icon = icon("credit-card"))
+                                 )
                         )
+                        
             )),
     
-    tabItem(tabName = "6ratings",
-            #h2("Dashboard tab content")
-            
+    tabItem(tabName = "Compare",
             fluidRow(
-              box(width = 6,status = "warning",
-                  selectInput('school_name2', 'School',HS_frame$School.Name)),
-              box(width=6,status = "warning",
-                  selectInput('aspect', 'Item',names(Aspects),
-                              selected=names(Aspects)[1]))
-            ),
-            fluidRow(box(width = 12,status = "danger",uiOutput("hist_School"))),
-            fluidRow(
-              column(width =8,
-                     box(width = NULL,status = "primary",
-                         plotlyOutput('rating_hist')))
-              ,
-              # column(width =NULL,
-              column(width =4,    
-                     valueBoxOutput('Rank',width = NULL),
-                     
-                     box(width = NULL,title=sprintf("%s <strong>Positive Responses on Survey",icon("thumbs-up"))%>%lapply(htmltools::HTML),
-                         valueBoxOutput('Rank_city',width = NULL),
-                         valueBoxOutput('Rank_boro',width = NULL))
+              column(width=6,
+                     box(width = NULL,
+                       selectInput("radar_school1", strong("Select 1st School",icon("university")),
+                                   choices = as.vector(schoolname), selected = schoolname[1]))),
+              column(width=6,
+                     box(width = NULL,
+                     selectInput("radar_school2", strong("Select 2nd School",icon("university")),
+                                 choices =as.vector(schoolname), selected = schoolname[2]))
               )
-              #valueBox(verbatimTextOutput("Rank"), "Rank", icon = icon("credit-card"))
             )
-            
+            ,
+            fluidRow(
+              column(width=6,
+              box(plotlyOutput("plot",height = 300)
+                  )))
     )
+    
+    
   )
 )
+
 
 
 
