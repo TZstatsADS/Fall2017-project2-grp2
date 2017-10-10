@@ -1,0 +1,489 @@
+"","Ranking","School Name","Chemistry Score (%)","Physics Score (%)","Averaged Score (%)"
+"1",1,"High School of American Studies at Lehman College",100,100,100
+"2",2,"Stuyvesant High School",99,99,99
+"3",3,"Staten Island Technical High School",99,99,99
+"4",4,"Queens High School for the Sciences at York Colleg",98,99,99
+"5",5,"Bronx High School of Science",100,98,99
+"6",6,"Townsend Harris High School",99,97,98
+"7",7,"Academy of Finance and  Enterprise",94,100,97
+"8",8,"East-West School of International Studies",97,90,94
+"9",9,"High School for Mathematics, Science and Engineeri",95,91,93
+"10",10,"Eleanor Roosevelt High School",97,88,93
+"11",11,"Scholars' Academy",97,84,91
+"12",12,"New Explorations into Science, Technology and Math",94,89,91
+"13",13,"Brooklyn Technical High School",92,90,91
+"14",14,"Francis Lewis High School",91,89,90
+"15",15,"High School for Dual Language and Asian Studies",98,80,89
+"16",16,"Manhattan Village Academy",84,92,88
+"17",17,"New Utrecht High School",80,91,86
+"18",18,"Midwood High School",88,83,86
+"19",19,"Information Technology High School",92,80,86
+"20",20,"Fort Hamilton High School",80,92,86
+"21",21,"Millennium High School",88,83,85
+"22",22,"High School for Community Leadership",85,84,85
+"23",23,"Aviation Career & Technical Education High School",77,90,84
+"24",24,"High School for Health Professions and Human Servi",85,82,83
+"25",25,"Leon M. Goldstein High School for the Sciences",82,82,82
+"26",26,"Thomas A. Edison Career and Technical Education Hi",80,83,81
+"27",27,"High School for Public Service: Heroes  of Tomorro",74,88,81
+"28",28,"Newcomers High School",66,94,80
+"29",29,"Manhattan Center for Science and Mathematics",79,82,80
+"30",30,"Frederick Douglass Academy",66,95,80
+"31",31,"Civic Leadership Academy",80,80,80
+"32",32,"Martin Van Buren High School",79,77,78
+"33",33,"Hostos-Lincoln Academy of Science",66,89,77
+"34",34,"Bronx Center for Science and Mathematics",85,67,76
+"35",35,"Fiorello H. LaGuardia High School of Music & Art a",77,68,73
+"36",36,"Democracy Prep Charter School",90,56,73
+"37",37,"Williamsburg Preparatory School",77,67,72
+"38",38,"N.Y.C. Lab School for Collaborative Studies",56,89,72
+"39",39,"Millennium Brooklyn HS",76,67,72
+"40",40,"High School of Applied Communication",61,83,72
+"41",41,"City College Academy of the Arts",71,73,72
+"42",42,"Benjamin N. Cardozo High School",73,72,72
+"43",43,"Queens Gateway to Health Sciences Secondary School",79,63,71
+"44",44,"Medgar Evers College Preparatory School",72,71,71
+"45",45,"John Bowne High School",65,77,71
+"46",46,"Frank Sinatra School of the Arts High School",62,80,71
+"47",47,"Manhattan / Hunter Science High School",86,54,70
+"48",48,"Franklin Delano Roosevelt High School",62,78,70
+"49",49,"Forest Hills High School",70,70,70
+"50",50,"New World High School",78,58,68
+"51",51,"James Madison High School",55,82,68
+"52",52,"Susan E. Wagner High School",64,70,67
+"53",53,"Edward R. Murrow High School",58,77,67
+"54",54,"KIPP Infinity Charter School",65,65,65
+"55",55,"New Dorp High School",57,71,64
+"56",56,"William Cullen Bryant High School",65,62,63
+"57",57,"The Global Learning Collaborative",78,47,62
+"58",58,"High School for Environmental Studies",53,72,62
+"59",59,"KIPP Academy Charter School",70,51,61
+"60",60,"Central Park East High School",62,60,61
+"61",61,"The Brooklyn School for Math and Research",57,64,60
+"62",62,"Robert H. Goddard High School of Communication Art",53,67,60
+"63",63,"High School for Arts and Business",49,70,60
+"64",64,"Brooklyn Studio Secondary School",36,83,60
+"65",65,"Benjamin Banneker Academy",71,50,60
+"66",66,"Maspeth High School",60,58,59
+"67",67,"Jamaica Gateway to the Sciences",63,54,59
+"68",68,"High School for Construction Trades, Engineering a",64,54,59
+"69",69,"Mott Hall V",33,82,58
+"70",70,"Grover Cleveland High School",27,87,57
+"71",71,"Art and Design High School",46,69,57
+"72",72,"Port Richmond High School",43,69,56
+"73",73,"Tottenville High School",48,60,54
+"74",74,"Collegiate Institute for Math and Science",47,60,54
+"75",75,"Bayside High School",55,53,54
+"76",76,"Queens School of Inquiry, The",64,42,53
+"77",77,"Talent Unlimited High School",50,53,52
+"78",78,"Curtis High School",52,52,52
+"79",79,"John Adams High School",54,45,49
+"80",80,"Community Health Academy of the Heights",32,67,49
+"81",81,"Hyde Leadership Charter School",42,54,48
+"82",82,"High School of  Telecommunication Arts and Technol",40,56,48
+"83",83,"The Marie Curie School for Medicine, Nursing, and",29,65,47
+"84",84,"DeWitt Clinton High School",39,55,47
+"85",85,"Riverdale / Kingsbridge Academy (Middle School / H",50,43,46
+"86",86,"KIPP STAR College Prep Charter School",52,40,46
+"87",87,"Flushing High School",35,53,44
+"88",88,"Brooklyn High School for Law and Technology",63,24,43
+"89",89,"The High School for Enterprise, Business and Techn",48,37,42
+"90",90,"It Takes a Village Academy",29,54,42
+"91",91,"John Dewey High School",34,45,40
+"92",92,"Marble Hill High School for International Studies",46,31,38
+"93",93,"Belmont Preparatory High School",14,61,37
+"94",94,"Gregorio Luperon High School for Science and Mathe",30,43,36
+"95",95,"Hillcrest High School",38,28,33
+"96",96,"Herbert H. Lehman High School",18,48,33
+"97",97,"The Michael J. Petrides School",26,37,32
+"98",98,"Abraham Lincoln High School",26,37,32
+"99",99,"Williamsburg Charter High School",36,27,31
+"100",100,"Eximius College Preparatory Academy: A College Boa",25,37,31
+"101",101,"Long Island City High School",16,40,28
+"102",102,"World Journalism Preparatory: A College Board Scho",31,22,27
+"103",103,"Fordham High School for the Arts",24,29,26
+"104",104,"Queens Vocational and Technical High School",19,30,25
+"105",105,"Queens Preparatory Academy",17,33,25
+"106",106,"Bronx Health Sciences High School",18,32,25
+"107",107,"High School of Economics and Finance",30,19,24
+"108",108,"Bronx High School for the Visual Arts",0,47,24
+"109",109,"East Bronx Academy for the Future",17,24,21
+"110",110,"Bronx Preparatory Charter School",36,7,21
+"111",111,"Urban Assembly Gateway School for Technology",35,4,20
+"112",112,"Manhattan Bridges High School",10,30,20
+"113",113,"Academy for Careers in Television and Film",24,8,16
+"114",114,"Cambria Heights Academy",17,9,13
+"115",115,"Brooklyn Preparatory High School",15,2,8
+"116",116,"High School for Law and Public Service",10,4,7
+"117",117,"School Name",NA,NA,NA
+"118",118,"Young Women's Leadership School, Queens",20,NA,NA
+"119",119,"Young Women's Leadership School, Astoria",72,NA,NA
+"120",120,"Young Women's Leadership School of Brooklyn",NA,NA,NA
+"121",121,"Young Women's Leadership School",81,NA,NA
+"122",122,"York Early College Academy",93,NA,NA
+"123",123,"World View High School",NA,NA,NA
+"124",124,"World Academy for Total Community Health High Scho",NA,NA,NA
+"125",125,"Women's Academy of Excellence",79,NA,NA
+"126",126,"Wings Academy",NA,NA,NA
+"127",127,"Williamsburg High School for Architecture and Desi",17,NA,NA
+"128",128,"Williamsburg Collegiate Charter School",8,NA,NA
+"129",129,"William E. Grady Career and Technical Education Hi",NA,NA,NA
+"130",130,"Westchester Square Academy",26,NA,NA
+"131",131,"West Bronx Academy for the Future",7,NA,NA
+"132",132,"Washington Irving High School",NA,NA,NA
+"133",133,"Washington Heights Expeditionary Learning School",NA,NA,NA
+"134",134,"Wadleigh Secondary School for the Performing & Vis",NA,NA,NA
+"135",135,"W. H. Maxwell Career and Technical Education High",NA,NA,NA
+"136",136,"Victory Collegiate High School",NA,NA,NA
+"137",137,"Veritas Academy",NA,NA,NA
+"138",138,"Vanguard High School",NA,NA,NA
+"139",139,"Validus Preparatory Academy: An Expeditionary Lear",NA,NA,NA
+"140",140,"Urban Assembly School of Design and Construction,",40,NA,NA
+"141",141,"Urban Assembly School of Business for Young Women,",20,NA,NA
+"142",142,"Urban Assembly School for Wildlife Conservation",NA,NA,NA
+"143",143,"Urban Assembly School for the Performing Arts",NA,NA,NA
+"144",144,"Urban Assembly School for Media Studies, The",NA,NA,NA
+"145",145,"Urban Assembly School for Criminal Justice",NA,NA,NA
+"146",146,"Urban Assembly School for Careers in Sports",29,NA,NA
+"147",147,"Urban Assembly School for Applied Math and Science",NA,NA,NA
+"148",148,"Urban Assembly New York Harbor School",53,NA,NA
+"149",149,"Urban Assembly Maker Academy",NA,NA,NA
+"150",150,"Urban Assembly Institute of Math and Science for Y",NA,NA,NA
+"151",151,"Urban Assembly High School of Music and Art",NA,NA,NA
+"152",152,"Urban Assembly Academy of Government and Law, The",27,NA,NA
+"153",153,"Urban Action Academy",NA,NA,NA
+"154",154,"University Prep Charter High School",29,NA,NA
+"155",155,"University Neighborhood High School",40,NA,NA
+"156",156,"University Heights Secondary School",NA,NA,NA
+"157",157,"Unity Center for Urban Technologies",16,NA,NA
+"158",158,"Union Square Academy for Health Sciences",6,NA,NA
+"159",159,"Transit Tech Career and Technical Education High S",NA,4,NA
+"160",160,"Thurgood Marshall Academy for Learning and Social",67,NA,NA
+"161",161,"Theatre Arts Production Company School",NA,NA,NA
+"162",162,"The Urban Assembly School for Law and Justice",NA,NA,NA
+"163",163,"The Urban Assembly School for Green Careers",NA,NA,NA
+"164",164,"The Urban Assembly School for Global Commerce",NA,NA,NA
+"165",165,"The Urban Assembly School for Emergency Management",NA,NA,NA
+"166",166,"The Urban Assembly School for Collaborative Health",NA,NA,NA
+"167",167,"The Urban Assembly Bronx Academy of Letters",44,NA,NA
+"168",168,"The Uft Charter School",2,NA,NA
+"169",169,"The School for Classics: An Academy of Thinkers, W",NA,NA,NA
+"170",170,"The Opportunity Charter School",NA,NA,NA
+"171",171,"The Metropolitan Soundview High School",NA,NA,NA
+"172",172,"The High School of Fashion Industries",46,NA,NA
+"173",173,"THE HIGH SCHOOL FOR LANGUAGE AND DIPLOMACY",29,NA,NA
+"174",174,"The High School for Global Citizenship",0,NA,NA
+"175",175,"The Equality Charter School",NA,NA,NA
+"176",176,"The College Academy",10,NA,NA
+"177",177,"THE CINEMA SCHOOL",13,NA,NA
+"178",178,"The Brooklyn Academy of Global Finance",NA,NA,NA
+"179",179,"The Bronxwood Preparatory Academy",NA,NA,NA
+"180",180,"Teachers Preparatory High School",NA,NA,NA
+"181",181,"Sunset Park High School",NA,NA,NA
+"182",182,"Summit Academy Charter School",25,NA,NA
+"183",183,"Stephen T. Mather Building Arts & Craftsmanship Hi",NA,NA,NA
+"184",184,"Special Music School",49,NA,NA
+"185",185,"South Bronx Preparatory: A College Board School",NA,NA,NA
+"186",186,"Sheepshead Bay High School",NA,NA,NA
+"187",187,"Secondary School for Law",61,NA,NA
+"188",188,"Secondary School for Journalism",NA,NA,NA
+"189",189,"Science, Technology and Research Early College Hig",NA,8,NA
+"190",190,"Science Skills Center High School for Science, Tec",26,NA,NA
+"191",191,"Schuylerville Preparatory High School",NA,NA,NA
+"192",192,"School of the Future High School",NA,NA,NA
+"193",193,"School for Tourism and Hospitality",NA,NA,NA
+"194",194,"School for Legal Studies",18,NA,NA
+"195",195,"School for International Studies",NA,NA,NA
+"196",196,"School for Human Rights, The",10,NA,NA
+"197",197,"School for Excellence",NA,NA,NA
+"198",198,"School for Democracy and  Leadership",NA,NA,NA
+"199",199,"Samuel Gompers Career and Technical Education High",NA,NA,NA
+"200",200,"Rockaway Park High School for Environmental Sustai",NA,NA,NA
+"201",201,"Rockaway Collegiate High School",0,NA,NA
+"202",202,"Robert F. Wagner, Jr. Secondary School for Arts an",37,NA,NA
+"203",203,"Robert F. Kennedy Community High School",44,NA,NA
+"204",204,"Richmond Hill High School",71,NA,NA
+"205",205,"Richard R. Green High School of Teaching",25,NA,NA
+"206",206,"Repertory Company High School for Theatre Arts",9,NA,NA
+"207",207,"Renaissance High School for Musical Theater & Tech",65,NA,NA
+"208",208,"Renaissance Charter School",35,NA,NA
+"209",209,"Renaissance Charter High School for Innovation",NA,NA,NA
+"210",210,"Ralph R. McKee Career and Technical Education High",7,NA,NA
+"211",211,"Rachel Carson High School for Coastal Studies",47,NA,NA
+"212",212,"Quest to Learn",22,NA,NA
+"213",213,"QUEENS METROPOLITAN HIGH SCHOOL",46,NA,NA
+"214",214,"Queens High School of Teaching, Liberal Arts and t",71,NA,NA
+"215",215,"Queens High School for Language Studies",85,NA,NA
+"216",216,"Queens High School for Information, Research, and",48,NA,NA
+"217",217,"Queens Collegiate: A College Board School",57,NA,NA
+"218",218,"PROGRESS High School for Professional Careers",11,NA,NA
+"219",219,"Professional Performing Arts High School",NA,NA,NA
+"220",220,"Preparatory Academy for Writers: A College Board S",58,NA,NA
+"221",221,"Performing Arts and Technology High School",18,NA,NA
+"222",222,"Pelham Preparatory Academy",38,NA,NA
+"223",223,"Pelham Lab High School",NA,NA,NA
+"224",224,"Peace and Diversity Academy",NA,NA,NA
+"225",225,"Pathways in Technology Early College High School (",NA,19,NA
+"226",226,"Pathways College Preparatory School: A College Boa",NA,NA,NA
+"227",227,"Park Slope Collegiate",NA,NA,NA
+"228",228,"Park East High School",22,NA,NA
+"229",229,"Pan American International High School at Monroe",NA,NA,NA
+"230",230,"Pan American International High School",NA,NA,NA
+"231",231,"Pace High School",50,NA,NA
+"232",232,"Pablo Neruda Academy",NA,NA,NA
+"233",233,"Origins High School",NA,NA,NA
+"234",234,"Ocean Hill Collegiate Charter School",NA,NA,NA
+"235",235,"NYC iSchool",NA,NA,NA
+"236",236,"NYC Charter High School for Architecture, Engineer",NA,NA,NA
+"237",237,"Northside Charter High School",20,NA,NA
+"238",238,"Newtown High School",48,NA,NA
+"239",239,"New Visions Charter High School for the Humanities",62,NA,NA
+"240",240,"New Visions Charter High School for Advanced Math",39,NA,NA
+"241",241,"New Heights Academy Charter School",64,NA,NA
+"242",242,"New Explorers High School",NA,NA,NA
+"243",243,"New Design High School",NA,NA,NA
+"244",244,"Nelson Mandela High School",NA,NA,NA
+"245",245,"N.Y.C. Museum School",53,NA,NA
+"246",246,"Murry Bergtraum High School for Business Careers",48,NA,NA
+"247",247,"Multicultural High School",NA,NA,NA
+"248",248,"Mott Haven Village Preparatory High School",NA,NA,NA
+"249",249,"Mott Hall High School",NA,NA,NA
+"250",250,"Mott Hall Bronx High School",8,NA,NA
+"251",251,"Morris Academy for Collaborative Studies",NA,NA,NA
+"252",252,"Monroe Academy for Visual Arts & Design",NA,NA,NA
+"253",253,"Millennium Art Academy",47,NA,NA
+"254",254,"Middle College High School at LaGuardia Community",NA,NA,NA
+"255",255,"Metropolitan High School, The",23,NA,NA
+"256",256,"Metropolitan Expeditionary Learning School",45,NA,NA
+"257",257,"Mathematics, Science Research and Technology Magne",46,NA,NA
+"258",258,"Math, Engineering, and Science Academy Charter Hig",16,NA,NA
+"259",259,"Marta Valle High School",87,NA,NA
+"260",260,"Manhattan Theatre Lab High School",NA,NA,NA
+"261",261,"Manhattan International High School",NA,NA,NA
+"262",262,"Manhattan Early College School for Advertising",NA,NA,NA
+"263",263,"MANHATTAN BUSINESS ACADEMY",61,NA,NA
+"264",264,"MANHATTAN ACADEMY FOR ARTS & LANGUAGE",NA,NA,NA
+"265",265,"M.S. 223 The Laboratory School of Finance and Tech",NA,NA,NA
+"266",266,"Lyons Community School",NA,NA,NA
+"267",267,"Lower Manhattan Arts Academy",41,NA,NA
+"268",268,"Life Sciences Secondary School",NA,NA,NA
+"269",269,"Life Academy High School for Film and Music",NA,NA,NA
+"270",270,"Legacy School for Integrated Studies",NA,NA,NA
+"271",271,"Leadership Institute",NA,NA,NA
+"272",272,"Leadership and Public Service High School",NA,NA,NA
+"273",273,"Law, Government and Community Service High School",NA,NA,NA
+"274",274,"Landmark High School",NA,NA,NA
+"275",275,"Kurt Hahn Expeditionary Learning School",NA,NA,NA
+"276",276,"Knowledge and Power Preparatory Academy Internatio",NA,NA,NA
+"277",277,"KIPP AMP Charter School",60,NA,NA
+"278",278,"Kingsbridge International High School",NA,NA,NA
+"279",279,"Kingsborough Early College School",77,NA,NA
+"280",280,"Kings Collegiate Charter School",14,NA,NA
+"281",281,"Khalil Gibran International Academy",NA,NA,NA
+"282",282,"Juan Morel Campos Secondary School",7,NA,NA
+"283",283,"Jonathan Levin High School for Media and Communica",NA,NA,NA
+"284",284,"John W. Lavelle Preparatory Charter School",29,NA,NA
+"285",285,"Jane Addams High School for Academic Careers",NA,NA,NA
+"286",286,"Jacqueline Kennedy Onassis High School",29,NA,NA
+"287",287,"J.H.S. 157 Stephen A. Halsey",NA,NA,NA
+"288",288,"Inwood Early College for Health and Information Te",NA,NA,NA
+"289",289,"International School for Liberal Arts",NA,NA,NA
+"290",290,"International Leadership Charter High School",NA,NA,NA
+"291",291,"International High School for Health Sciences",NA,NA,NA
+"292",292,"International High School at Union Square",NA,NA,NA
+"293",293,"International High School at Prospect Heights",NA,NA,NA
+"294",294,"International High School at LaGuardia Community C",NA,NA,NA
+"295",295,"International High School at Lafayette",NA,NA,NA
+"296",296,"International Community High School",NA,NA,NA
+"297",297,"International Arts Business School",NA,NA,NA
+"298",298,"In-Tech Academy (M.S. / High School 368)",33,NA,NA
+"299",299,"Institute for Health Professions at Cambria Height",NA,NA,NA
+"300",300,"Institute for Collaborative Education",NA,NA,NA
+"301",301,"Humanities & Arts Magnet High School",31,NA,NA
+"302",302,"Hudson High School of Learning Technologies",NA,NA,NA
+"303",303,"Holcombe L. Rucker School of Community Research",NA,NA,NA
+"304",304,"Hillside Arts & Letters Academy",NA,NA,NA
+"305",305,"High School of World Cultures",15,NA,NA
+"306",306,"High School of Sports Management",NA,NA,NA
+"307",307,"High School of Language and Innovation",40,NA,NA
+"308",308,"High School of Hospitality Management",15,NA,NA
+"309",309,"High School of Graphic Communication Arts",NA,NA,NA
+"310",310,"High School of Computers and Technology",NA,86,NA
+"311",311,"High School of Arts and Technology",4,NA,NA
+"312",312,"High School for Youth and Community Development at",NA,NA,NA
+"313",313,"High School for Violin and Dance",NA,NA,NA
+"314",314,"High School for Teaching and the Professions",NA,NA,NA
+"315",315,"High School for Service & Learning at Erasmus",NA,NA,NA
+"316",316,"High School for Medical Professions",16,NA,NA
+"317",317,"High School for Media and Communications",15,NA,NA
+"318",318,"High School for Law, Advocacy and Community Justic",13,NA,NA
+"319",319,"High School for Law Enforcement and Public Safety",18,NA,NA
+"320",320,"High School for Innovation in Advertising and Medi",NA,NA,NA
+"321",321,"High School for Health Careers and Sciences",NA,NA,NA
+"322",322,"High School for Energy and Technology",82,NA,NA
+"323",323,"High School for Contemporary Arts",24,NA,NA
+"324",324,"High School for Civil Rights",NA,NA,NA
+"325",325,"High School for Arts, Imagination and Inquiry",21,NA,NA
+"326",326,"Heritage School, The",20,NA,NA
+"327",327,"Henry Street School for International Studies",NA,NA,NA
+"328",328,"Health Opportunities High School",NA,NA,NA
+"329",329,"Harvest Collegiate High School",NA,NA,NA
+"330",330,"Harry S Truman High School",39,NA,NA
+"331",331,"Harlem Village Academy Leadership Charter School",NA,NA,NA
+"332",332,"Harlem Village Academy Charter School",NA,NA,NA
+"333",333,"Harlem Children's Zone Promise Academy II Charter",NA,NA,NA
+"334",334,"Harlem Children's Zone Promise Academy 1 Charter S",68,NA,NA
+"335",335,"H.E.R.O. High (Health, Education, and Research Occ",NA,NA,NA
+"336",336,"Green School: An Academy for Environmental Careers",NA,NA,NA
+"337",337,"Gramercy Arts High School",70,NA,NA
+"338",338,"Grace Dodge Career and Technical Education High Sc",NA,NA,NA
+"339",339,"Gotham Professional Arts Academy",NA,NA,NA
+"340",340,"George Westinghouse Career and Technical Education",44,NA,NA
+"341",341,"George Washington Carver High School for the Scien",21,NA,NA
+"342",342,"Gaynor McCown Expeditionary Learning School",67,NA,NA
+"343",343,"Gateway School for Environmental Research and Tech",NA,NA,NA
+"344",344,"Frederick Douglass Academy VII High School",NA,NA,NA
+"345",345,"Frederick Douglass Academy VI High School",NA,NA,NA
+"346",346,"Frederick Douglass Academy IV Secondary School",0,NA,NA
+"347",347,"Frederick Douglass Academy III Secondary School",8,NA,NA
+"348",348,"Frederick Douglass Academy II Secondary School",NA,NA,NA
+"349",349,"FRANK McCOURT HIGH SCHOOL",95,NA,NA
+"350",350,"Frances Perkins Academy",NA,NA,NA
+"351",351,"Foundations Academy",NA,NA,NA
+"352",352,"Foreign Language Academy of Global Studies",12,NA,NA
+"353",353,"Fordham Leadership Academy for Business and Techno",NA,NA,NA
+"354",354,"Food and Finance High School",NA,NA,NA
+"355",355,"Flushing International High School",NA,NA,NA
+"356",356,"Felisa Rincon de Gautier Institute for Law and Pub",4,NA,NA
+"357",357,"FDNY High School for Fire and Life Safety",NA,NA,NA
+"358",358,"Fannie Lou Hamer Freedom High School",NA,NA,NA
+"359",359,"Facing History School, The",NA,NA,NA
+"360",360,"Explorations Academy",NA,NA,NA
+"361",361,"Expeditionary Learning School for Community Leader",NA,NA,NA
+"362",362,"Excelsior Preparatory High School",79,NA,NA
+"363",363,"Excellence Boys Charter School",NA,NA,NA
+"364",364,"Essex Street Academy",NA,NA,NA
+"365",365,"ESPERANZA PREPARATORY ACADEMY",39,NA,NA
+"366",366,"Epic High School - South",NA,NA,NA
+"367",367,"Epic High School - North",NA,NA,NA
+"368",368,"Energy Tech High School",39,NA,NA
+"369",369,"El Puente Academy for Peace and Justice",NA,NA,NA
+"370",370,"EBC High School for Public Service - Bushwick",37,NA,NA
+"371",371,"East Side Community School",NA,NA,NA
+"372",372,"East New York Family Academy",NA,NA,NA
+"373",373,"Eagle Academy for Young Men III",71,NA,NA
+"374",374,"Eagle Academy for Young Men II",NA,NA,NA
+"375",375,"Eagle Academy for Young Men",25,NA,NA
+"376",376,"DreamYard Preparatory School",NA,NA,NA
+"377",377,"Dr. Susan S. McKinney Secondary School of the Arts",NA,NA,NA
+"378",378,"Dr. Richard Izquierdo Health and Science Charter S",NA,NA,NA
+"379",379,"Discovery High School",84,NA,NA
+"380",380,"Democracy Prep Harlem Charter School",87,NA,NA
+"381",381,"Cypress Hills Collegiate Preparatory School",15,NA,NA
+"382",382,"Cultural Academy for the Arts and Sciences",47,NA,NA
+"383",383,"CSI High School for International Studies",97,NA,NA
+"384",384,"Crotona International High School",NA,NA,NA
+"385",385,"Coney Island Preparatory Public Charter School",54,NA,NA
+"386",386,"Comprehensive Model School Project M.S. 327",49,NA,NA
+"387",387,"Community School for Social Justice",NA,NA,NA
+"388",388,"Columbia Secondary School",93,NA,NA
+"389",389,"Cobble Hill School of American Studies",33,NA,NA
+"390",390,"Coalition School for Social Change",NA,NA,NA
+"391",391,"Claremont International HS",NA,NA,NA
+"392",392,"Clara Barton High School",48,NA,NA
+"393",393,"City Polytechnic High School of Engineering, Archi",NA,NA,NA
+"394",394,"Choir Academy of Harlem",NA,NA,NA
+"395",395,"Chelsea Career and Technical Education High School",100,NA,NA
+"396",396,"Channel View School for Research",NA,NA,NA
+"397",397,"Celia Cruz Bronx High School of Music, The",NA,13,NA
+"398",398,"Business, Computer Applications & Entrepreneurship",8,NA,NA
+"399",399,"Business Technology Early College High School",NA,12,NA
+"400",400,"BUSINESS OF SPORTS SCHOOL",NA,NA,NA
+"401",401,"Bushwick School for Social Justice",NA,NA,NA
+"402",402,"Bushwick Leaders High School for Academic Excellen",0,NA,NA
+"403",403,"Brownsville Collegiate Charter School",52,NA,NA
+"404",404,"Brooklyn Theatre Arts High School",NA,NA,NA
+"405",405,"Brooklyn Secondary School for Collaborative Studie",NA,NA,NA
+"406",406,"Brooklyn School for Music & Theatre",6,NA,NA
+"407",407,"Brooklyn School for Global Studies",NA,NA,NA
+"408",408,"Brooklyn Prospect Charter School",76,NA,NA
+"409",409,"Brooklyn Latin School, The",92,NA,NA
+"410",410,"Brooklyn Lab School",NA,NA,NA
+"411",411,"Brooklyn International High School",NA,NA,NA
+"412",412,"Brooklyn Institute for Liberal Arts",NA,NA,NA
+"413",413,"Brooklyn High School of the Arts",17,NA,NA
+"414",414,"Brooklyn Generation School",NA,NA,NA
+"415",415,"Brooklyn East Collegiate Charter School",NA,NA,NA
+"416",416,"Brooklyn Community High School of Communication, A",22,NA,NA
+"417",417,"Brooklyn Collegiate: A College Board School",NA,NA,NA
+"418",418,"Brooklyn College Academy",92,NA,NA
+"419",419,"Brooklyn Academy of Science and the Environment",NA,42,NA
+"420",420,"Bronxdale High School",NA,NA,NA
+"421",421,"Bronx Theatre High School",6,NA,NA
+"422",422,"Bronx Studio School for Writers and Artists",4,NA,NA
+"423",423,"Bronx School of Law and Finance",NA,NA,NA
+"424",424,"Bronx School for Law, Government and Justice",53,NA,NA
+"425",425,"Bronx River High School",NA,NA,NA
+"426",426,"Bronx Lighthouse Charter School",86,NA,NA
+"427",427,"Bronx Leadership Academy II High School",NA,NA,NA
+"428",428,"Bronx Leadership Academy High School",32,NA,NA
+"429",429,"Bronx Latin",50,NA,NA
+"430",430,"Bronx Lab School",NA,NA,NA
+"431",431,"Bronx International High School",NA,NA,NA
+"432",432,"Bronx High School of Business",37,NA,NA
+"433",433,"Bronx High School for Writing and Communication Ar",5,NA,NA
+"434",434,"Bronx High School for Medical Science",57,NA,NA
+"435",435,"Bronx High School for Law and Community Service",NA,NA,NA
+"436",436,"Bronx Guild",NA,NA,NA
+"437",437,"Bronx Envision Academy",21,NA,NA
+"438",438,"Bronx Engineering and Technology Academy",NA,NA,NA
+"439",439,"Bronx Early College Academy for Teaching & Learnin",28,NA,NA
+"440",440,"Bronx Design and Construction Academy",13,NA,NA
+"441",441,"Bronx Compass High School",NA,NA,NA
+"442",442,"Bronx Collegiate Academy",NA,NA,NA
+"443",443,"Bronx Collaborative High School",NA,NA,NA
+"444",444,"Bronx Career and College Preparatory High School",NA,NA,NA
+"445",445,"BRONX BRIDGES HIGH SCHOOL",11,NA,NA
+"446",446,"Bronx Aerospace High School",NA,NA,NA
+"447",447,"Bronx Academy of Health Careers",41,NA,NA
+"448",448,"Bronx Academy for Software Engineering (BASE)",NA,NA,NA
+"449",449,"Bread & Roses Integrated Arts High School",NA,NA,NA
+"450",450,"Boys and Girls High School",20,NA,NA
+"451",451,"Benjamin Franklin High School for Finance & Inform",NA,NA,NA
+"452",452,"Bedford Stuyvesant Collegiate -Uncommon Collegiate",27,NA,NA
+"453",453,"Bedford Academy High School",97,NA,NA
+"454",454,"Beacon High School",NA,NA,NA
+"455",455,"Baruch College Campus High School",84,NA,NA
+"456",456,"Bard High School Early College Queens",NA,NA,NA
+"457",457,"Bard High School Early College",95,NA,NA
+"458",458,"Banana Kelly High School",NA,NA,NA
+"459",459,"Baccalaureate School for Global Education",97,NA,NA
+"460",460,"Automotive High School",NA,NA,NA
+"461",461,"August Martin High School",NA,NA,NA
+"462",462,"Astor Collegiate Academy",62,NA,NA
+"463",463,"Arts & Media Preparatory Academy",0,NA,NA
+"464",464,"Archimedes Academy for Math, Science and Technolog",21,NA,NA
+"465",465,"Antonia Pantoja Preparatory Academy: A College Boa",NA,NA,NA
+"466",466,"All City Leadership Secondary School",NA,NA,NA
+"467",467,"Alfred E. Smith Career and Technical Education Hig",NA,NA,NA
+"468",468,"ACORN Community High School",NA,NA,NA
+"469",469,"Achievement First Endeavor Charter School",NA,NA,NA
+"470",470,"Achievement First East New York Charter School",NA,NA,NA
+"471",471,"Achievement First Crown Heights Charter School",NA,NA,NA
+"472",472,"Achievement First Bushwick Charter School",NA,NA,NA
+"473",473,"Academy of Urban Planning",NA,4,NA
+"474",474,"Academy of Medical Technology: A College Board Sch",25,NA,NA
+"475",475,"Academy of Innovative Technology",NA,NA,NA
+"476",476,"Academy of Hospitality and Tourism",NA,NA,NA
+"477",477,"Academy of American Studies",64,NA,NA
+"478",478,"Academy for Young Writers",NA,NA,NA
+"479",479,"Academy for Software Engineering",71,NA,NA
+"480",480,"Academy for Social Action: A College Board School",NA,NA,NA
+"481",481,"Academy for Scholarship and Entrepreneurship: A Co",NA,NA,NA
+"482",482,"Academy for Language and Technology",NA,NA,NA
+"483",483,"Academy for Health Careers",NA,NA,NA
+"484",484,"Academy for Environmental Leadership",NA,NA,NA
+"485",485,"Academy for Conservation and the Environment",9,NA,NA
+"486",486,"Academy for College Preparation and Career Explora",NA,NA,NA
+"487",487,"A. Philip Randolph Campus High School",82,NA,NA
+"488",488,"47 The American Sign Language and English Secondar",NA,6,NA
