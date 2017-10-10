@@ -21,6 +21,7 @@ tidyrace<-read.csv("~/Desktop/[ADS]Advanced Data Science/Fall2017-project2-grp2/
 data_merge$borough<-as.character(data_merge$borough)
 teacher_expr<-HS_summary[,c("School.Name","Percent.of.teachers.with.3.or.more.years.of.experience")]
 HS_frame$School.Name<-as.character(HS_frame$School.Name)
+schoolname<-loc_data$school.name
 
 
 ########### making the data set for Value Boxes################3
@@ -63,9 +64,11 @@ icon_list<-list("Approaching Target"=icon("star-half-o"),"Exceeding Target"=icon
 
 ############### calculating the RANK Data  ###############
 cal_values<-function(df,School_name){
+  df<-merge(df,loc_data,by.x = "School.Name",by.y="school.name")
   colnames(df)[3:7]<-c("rating","ele_score","School_per","City_per","Boro_per")
   df[,4]<-as.numeric(as.vector(df[,4]))
   s_i=df[df$School.Name==School_name,"ele_score"]
+  boro_i=df[df$School.Name==School_name,"borough"]
   
   df<-df%>%filter(!is.na(ele_score))
   
@@ -75,13 +78,16 @@ cal_values<-function(df,School_name){
     rank_i=floor(nrow(df)-rank(df$ele_score))
     rank_i=paste(rank_i[which(df$School.Name==School_name)],"/","487",sep = "")
   }
-  higher_t_city<-(df[df$School.Name==School_name,"School_per"]-df[df$School.Name==School_name,"City_per"])/df[df$School.Name==School_name,"City_per"]
-  higher_t_boro<-(df[df$School.Name==School_name,"School_per"]-df[df$School.Name==School_name,"Boro_per"])/df[df$School.Name==School_name,"Boro_per"]
-  
+  # higher_t_city<-(df[df$School.Name==School_name,"School_per"]-df[df$School.Name==School_name,"City_per"])/df[df$School.Name==School_name,"City_per"]
+  # higher_t_boro<-(df[df$School.Name==School_name,"School_per"]-df[df$School.Name==School_name,"Boro_per"])/df[df$School.Name==School_name,"Boro_per"]
+  #higher_t_city<-(s_i-mean(df$ele_score))/mean(df$ele_score)
+  higher_t_city<-df[df$School.Name==School_name,"School_per"]
+  higher_t_boro<-(s_i-mean(df$ele_score[df$borough==boro_i]))/mean(df$ele_score[df$borough==boro_i])
   if(length(higher_t_city)<1){
     higher_t_city<-"NA"
   }else{
-    higher_t_city<-ifelse(higher_t_city>=0,paste(round(higher_t_city,2)*100,"%"," Higher",sep = ""),paste(round(abs(higher_t_city),2)*100,"%"," Lower",sep = ""))
+    higher_t_city<-paste(round(higher_t_city,2)*100,"%",sep = "")
+    #higher_t_city<-ifelse(higher_t_city>=0,paste(round(higher_t_city,2)*100,"%"," Higher",sep = ""),paste(round(abs(higher_t_city),2)*100,"%"," Lower",sep = ""))
   }
   
   if(length(higher_t_boro)<1){
@@ -193,7 +199,7 @@ make_radar<-function(school1,school2){
   }
   score<-as.vector(score)
   
-  response<-rep(c("rigorous","collaborative teacher","supportive environment","leadership","family-school tie","trust"),487)
+  response<-rep(c("Rigorous","Collaborative Teacher","Supportive Environment","Leadership","Family-Community Tie","Trust"),487)
   
   schoolname<-Rigorous_instruction[,2]
   school<-rep(schoolname,each=6)
@@ -237,6 +243,19 @@ make_radar<-function(school1,school2){
   
   d<-df[c(1:6,1),]
   dd<-df[c(loc1:(loc1+5),loc1,loc2:(loc2+5),loc2),]
+  m <- list(
+    l = 30,
+    r = 20,
+    b = 0,
+    t = 0
+  )
+  ax <- list(
+    title = "",
+    zeroline = FALSE,
+    showline = FALSE,
+    showticklabels = FALSE,
+    showgrid = FALSE
+  )
   
   p %>% 
     add_trace(data = dd, x = dd$o, y = dd$a, color = factor(dd$school), 
@@ -269,11 +288,97 @@ make_radar<-function(school1,school2){
       # autosize = FALSE,
       # hovermode = "closest",     
       # autoscale = TRUE,
-      # width = 450,
-      # height = 450,
-      xaxis = list( showticklabels = FALSE, zeroline = FALSE, showgrid = FALSE),
-      yaxis = list( showticklabels = FALSE, zeroline = FALSE, showgrid = FALSE),
-      legend=list(orientation = 'h')
+      # width = 350,
+      # height = 350,
+      xaxis =ax,
+      yaxis = ax,
+      legend=list(orientation = 'h'),
+      lot_bgcolor='rgb(254, 247, 234)',margin=m
       )
   
+  
 }
+
+trans_theme <- theme(
+  panel.grid.minor = element_blank(), 
+  panel.grid.major = element_blank(),
+  panel.background = element_rect(fill=NA),
+  plot.background = element_rect(fill=NA)
+)
+
+
+br.df<-loc_data
+br.df<-br.df[,-1:-2]
+br.name<-c("Manhattan","Brooklyn","Bronx","Queens","Staten Island")
+
+
+mht<-br.df[br.df$borough==br.name[1],1]
+brkl<-br.df[br.df$borough==br.name[2],1]
+brx<-br.df[br.df$borough==br.name[3],1]
+qs<-br.df[br.df$borough==br.name[4],1]
+sti<-br.df[br.df$borough==br.name[5],1]
+
+
+############### RANK DATA SETS
+data.ranked.quant <- read.csv("~/Desktop/[ADS]Advanced Data Science/Fall2017-project2-grp2/data/data.ranked.quant.csv")
+head(data.ranked.quant)
+data.ranked.quant$X <- NULL
+colnames(data.ranked.quant) <- c("Ranking", "School Name", "Graduation Rate", "Post-secondary Enrollment Rate, 6 Months", "Averaged Score (%)")
+
+data.ranked.math <- read.csv("~/Desktop/[ADS]Advanced Data Science/Fall2017-project2-grp2/data/data.ranked.math.csv")
+data.ranked.math$X <- NULL
+colnames(data.ranked.math) <- c("Ranking", "School Name", "Algebra Score (%)", "Geometry Score (%)", "Averaged Math Score (%)")
+
+data.ranked.english <- read.csv("~/Desktop/[ADS]Advanced Data Science/Fall2017-project2-grp2/data/data.ranked.english.csv")
+data.ranked.english$X <- NULL
+colnames(data.ranked.english) <- c("Ranking", "School Name", "English Score (%)")
+
+data.ranked.history <- read.csv("~/Desktop/[ADS]Advanced Data Science/Fall2017-project2-grp2/data/data.ranked.history.csv")
+data.ranked.history$X <- NULL
+colnames(data.ranked.history) <- c("Ranking", "School Name", "US History Score (%)", "Global History Score (%)", "Averaged History Score (%)")
+
+data.ranked.science <- read.csv("~/Desktop/[ADS]Advanced Data Science/Fall2017-project2-grp2/data/data.ranked.science.csv")
+data.ranked.science$X <- NULL
+colnames(data.ranked.science) <- c("Ranking", "School Name", "Chemistry Score (%)", "Physics Score (%)", "Averaged Science Score (%)")
+
+data.ranked.allsubjects <- read.csv("~/Desktop/[ADS]Advanced Data Science/Fall2017-project2-grp2/data/data.ranked.allsubjects.csv")
+data.ranked.allsubjects$X <- NULL
+colnames(data.ranked.allsubjects) <- c("Ranking", "School Name", "Averaged Score - all subjects (%)")
+
+data.ranked.RI <- read.csv("~/Desktop/[ADS]Advanced Data Science/Fall2017-project2-grp2/data/data.ranked.RI.csv")
+data.ranked.RI$X <- NULL
+colnames(data.ranked.RI) <- c("Ranking", "School Name", "Averaged Score (%)")
+
+data.ranked.CT <- read.csv("~/Desktop/[ADS]Advanced Data Science/Fall2017-project2-grp2/data/data.ranked.CT.csv")
+data.ranked.CT$X <- NULL
+colnames(data.ranked.CT) <- c("Ranking", "School Name", "Averaged Score (%)")
+
+data.ranked.SE <- read.csv("~/Desktop/[ADS]Advanced Data Science/Fall2017-project2-grp2/data/data.ranked.SE.csv")
+data.ranked.SE$X <- NULL
+colnames(data.ranked.SE) <- c("Ranking", "School Name", "Averaged Score (%)")
+
+data.ranked.ESL <- read.csv("~/Desktop/[ADS]Advanced Data Science/Fall2017-project2-grp2/data/data.ranked.ESL.csv")
+data.ranked.ESL$X <- NULL
+colnames(data.ranked.ESL) <- c("Ranking", "School Name", "Averaged Score (%)")
+
+data.ranked.SFCT <- read.csv("~/Desktop/[ADS]Advanced Data Science/Fall2017-project2-grp2/data/data.ranked.SFCT.csv")
+data.ranked.SFCT$X <- NULL
+colnames(data.ranked.SFCT) <- c("Ranking", "School Name", "Averaged Score (%)")
+
+data.ranked.T <- read.csv("~/Desktop/[ADS]Advanced Data Science/Fall2017-project2-grp2/data/data.ranked.T.csv")
+data.ranked.T$X <- NULL
+colnames(data.ranked.T) <- c("Ranking", "School Name", "Averaged Score (%)")
+
+data.ranked.allsurvey <- read.csv("~/Desktop/[ADS]Advanced Data Science/Fall2017-project2-grp2/data/data.ranked.allsurvey.csv")
+data.ranked.allsurvey$X <- NULL
+colnames(data.ranked.allsurvey) <- c("Ranking", "School Name", "Averaged Score (%)")
+
+
+
+
+
+
+
+
+
+

@@ -61,7 +61,10 @@ function(input, output, session) {
   observeEvent(input$map_color, {
     leafletProxy("map") %>% addProviderTiles(input$map_color)
   })
-  
+  # observeEvent(input$Boro_map, {
+  #   leafletProxy("map") %>% hideGroup("Manhattan")
+  # })
+  # 
   
   
   observeEvent(input$School1,{
@@ -88,31 +91,48 @@ function(input, output, session) {
       show_schoolname_tab_details(eventid)
       show_ranks(eventid)
       #show_rating4search(eventid)
-      }
-      
+    }
+    
   })
   
   
   observe({
     event <- input$map_shape_click
-    if (is.null(event))
-      return()
-    
-    isolate({
-      showratings(event$id)
-      show_races(event$id)
-      show_6_m(event$id)
-      show_18_m(event$id)
-      show_teacher(event$id)
-      show_eco(event$id)
-      show_disa(event$id)
-      show_learner(event$id)
-      show_schoolname(event$id)
-      show_sat(event$id)
-      show_rating_hist(event$id)
-      show_schoolname_tab_details(event$id)
-      show_ranks(event$id)
-    })
+    # if (is.null(event))
+    #   return()
+    if (is.null(event)){
+      event$id<-"School of the Future High School"
+      isolate({
+        showratings(event$id)
+        show_races(event$id)
+        show_6_m(event$id)
+        show_18_m(event$id)
+        show_teacher(event$id)
+        show_eco(event$id)
+        show_disa(event$id)
+        show_learner(event$id)
+        show_schoolname(event$id)
+        show_sat(event$id)
+        show_rating_hist(event$id)
+        show_schoolname_tab_details(event$id)
+        show_ranks(event$id)})
+    }else{
+      
+      isolate({
+        showratings(event$id)
+        show_races(event$id)
+        show_6_m(event$id)
+        show_18_m(event$id)
+        show_teacher(event$id)
+        show_eco(event$id)
+        show_disa(event$id)
+        show_learner(event$id)
+        show_schoolname(event$id)
+        show_sat(event$id)
+        show_rating_hist(event$id)
+        show_schoolname_tab_details(event$id)
+        show_ranks(event$id)
+      })}
   })
   
   observe({
@@ -137,10 +157,6 @@ function(input, output, session) {
     })
   })
   
-  
-  output$plot=renderPlotly({
-    make_radar(input$radar_school1,input$radar_school2)
-  })
   
   #show the ui text
   showratings<-function(School.name){
@@ -412,7 +428,7 @@ function(input, output, session) {
         sprintf("<strong><font color=\"#1a1a1a\" size=6> %s Sorry! No <font color=\"#8b1a1a\">%s</font> Data For This School",icon("University"),input$aspect)%>%lapply(htmltools::HTML)
       }else{
         sprintf(
-          "<strong><font color=\"#1a1a1a\" size=6>%s %s</font>",icon("bookmark-o"),School.Name)%>%lapply(htmltools::HTML)
+          "<strong><font color=\"#1a1a1a\" size=6>%s %s</font>",icon("university"),School.Name)%>%lapply(htmltools::HTML)
       }})}
   
   observeEvent(input$school_name2,{
@@ -455,13 +471,13 @@ function(input, output, session) {
     })
     output$Rank_city <- renderValueBox({
       valueBox(
-        ranks_data[2],"City Level" , icon = icon("building-o"),
+        ranks_data[2],"on School Survey" , icon = icon("street-view"),
         color = "blue",width=3
       )
     })
     output$Rank_boro <- renderValueBox({
       valueBox(
-        ranks_data[3],"Borough Level" , icon = icon("bicycle"),
+        ranks_data[3],"Borough Level" , icon = icon("map-signs"),
         color = "yellow",width=3
       )
     })
@@ -504,6 +520,110 @@ function(input, output, session) {
     
     
   }
+  
+  ######### Compare Schools ##############
+  output$plot_radar=renderPlotly({
+    make_radar(input$radar_school1,input$radar_school2)
+  })
+  df_select2<-reactive({
+    # if(is.na())
+    data_merge%>%filter(school.name%in%c(input$radar_school1,input$radar_school2))
+  })
+  
+  marker_opt <- markerOptions(opacity=0.8,riseOnHover=T)
+  output$map2 <- renderLeaflet({
+    labels <- sprintf(
+      "<strong><font color=\"#00008b\" size=3>%s</font></strong><br/>
+      %s<br/> 
+      <strong>%g</strong> students<br/>
+      ",
+      df_select2()$school.name, as.character(df_select2()$addr),df_select2()$Enrollment
+      
+    ) %>% lapply(htmltools::HTML)
+    
+    if(nrow(df_select2())<1){
+      #df_new2<-data_merge
+      
+    }else{
+      df_new2<-df_select2()
+    }
+    labels <- sprintf(
+      "<strong><font color=\"#00008b\" size=3>%s</font></strong><br/>
+      %s<br/> 
+      <strong>%g</strong> students<br/>
+      ",
+      df_new2$school.name, as.character(df_new2$addr),df_new2$Enrollment)
+    leaflet(data_merge)%>%
+      addTiles()%>%
+      addMarkers(~lon, ~lat,popup=labels_all,label=~school.name,icon=list(iconUrl='icon/school-2.png',iconSize=c(18,18)),group=~borough,options=marker_opt,layerId=~school.name)%>%
+      addProviderTiles("OpenStreetMap.HOT")%>%
+      addMarkers(df_new2$lon, df_new2$lat,popup=labels,label=df_new2$school.name,layerId=c("school1","school2"),options=marker_opt)%>%
+      setView(mean(df_new2$lon),mean(df_new2$lat),zoom=12)
+    # }
+  })
+  
+  output$Compare2school_SAT<-renderPlotly({
+    df<-tidysat%>%
+      filter(Name%in%c(input$radar_school1,input$radar_school2))
+    m <- list(
+      l = 20,
+      r = 20,
+      b = 30,
+      t =0
+    )
+    ax <- list(
+      title = "",
+      zeroline = FALSE,
+      showline = FALSE,
+      showticklabels = FALSE,
+      showgrid = FALSE
+    )
+    plot_ly()%>%
+      add_trace(y =~Score,x=~Sub,data=df%>%filter(Name==input$radar_school1),type = "bar",name=input$radar_school1,marker=list(color = "#20b2aa"))%>%
+      add_trace(y =~Score,x=~Sub,data=df%>%filter(Name==input$radar_school2),type = "bar",name=input$radar_school2,marker=list(color="#b0c4de"))%>%
+      layout(yaxis = ax, xaxis =list(title=""),height=250,
+             barmode = 'group',legend=list(orientation = 'h'),margin=m)
+    
+    
+  })
+  
+  
+  
+  observeEvent(input$click_school1,{
+    event<-input$map2_marker_click
+    print(event)
+    #change_school1(event$id)
+    updateSelectInput(session, "radar_school1",
+                      #label = strong(icon("hand-o-right"),"Select 1st School",style="color:LightSeaGreen"),
+                      #choices =as.vector(schoolname) ,
+                      selected =event$id)
+  })
+  observeEvent(input$click_school2,{
+    event<-input$map2_marker_click
+    print(event)
+    #change_school1(event$id)
+    updateSelectInput(session, "radar_school2",
+                      #label = strong(icon("hand-o-right"),"Select 2nd School",style="color:LightSeaGreen"),
+                      #choices =as.vector(schoolname) ,
+                      selected =event$id)
+  })
+  
+  
+  ######################## Rank Tab ##########################
+  output$datarankedquant <- renderDataTable(data.ranked.quant)
+  output$datarankedmath <- renderDataTable(data.ranked.math)
+  output$datarankedenglish <- renderDataTable(data.ranked.english)
+  output$datarankedhistory <- renderDataTable(data.ranked.history)
+  output$datarankedscience <- renderDataTable(data.ranked.science)
+  output$datarankedallsubjects <- renderDataTable(data.ranked.allsubjects)
+  output$datarankedRI <- renderDataTable(data.ranked.RI)
+  output$datarankedCT <- renderDataTable(data.ranked.CT)
+  output$datarankedSE <- renderDataTable(data.ranked.SE)
+  output$datarankedESL <- renderDataTable(data.ranked.ESL)
+  output$datarankedSFCT <- renderDataTable(data.ranked.SFCT)
+  output$datarankedT <- renderDataTable(data.ranked.T)
+  output$datarankedallsurvey <- renderDataTable(data.ranked.allsurvey)
+  
   
   
   

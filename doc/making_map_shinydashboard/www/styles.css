@@ -1,0 +1,114 @@
+/*/*/* Simple css theme for shiny app by Adam Gao. */
+
+body {
+    color: #000000;
+}
+
+/*/*/*/* Page background */
+#bg {
+    position: fixed;
+    background-image: url("img/highschool-hallway.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+/* Navbar Tweaks */
+/*.navbar-default {
+    background-color: #000000;
+    border-color: transparent;
+}
+.navbar-default .navbar-nav>.active>a {
+    color: #000000;
+    background-color: #ebebeb;
+}
+.navbar-default .navbar-nav>li>a {
+    color: #ffffff;
+}
+
+/* Universal font */
+/*@font-face {
+    font-family: MyRaleway;
+    src: url("fonts/Raleway/Raleway-Regular.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: MyRaleway;
+    src: url("fonts/Raleway/Raleway-Bold.ttf");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: MyRaleway;
+    src: url("fonts/Raleway/Raleway-Italic.ttf");
+    font-style: italic;
+}
+
+* {
+    font-family: MyRaleway
+}
+
+/* Universal plain text font size */
+p {
+    font-size: 120%;
+}
+
+/* full page map division */
+div.outer {
+    position: fixed;
+    top: 30px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden; /* content excedes the window area will be hidden */
+    padding: 0;
+}*/*/
+
+/* control pad  */
+#controls {
+    background-color: white;
+    padding: 0 10px 10px 10px;
+    cursor: move;
+    /* Fade out while not hovering */
+    opacity: 0.9;
+    transition: opacity 500ms 1s;
+}
+
+#controls1 {
+    background-color: white;
+    padding: 0 10px 10px 10px;
+    cursor: move;
+    /* Fade out while not hovering */
+    opacity: 0.9;
+    transition: opacity 100ms 1s;
+}
+
+#controls1:hover {
+  /* Fade in while hovering */
+  opacity: 0.95;
+  transition-delay: 0;
+}
+
+#controls:hover {
+  /* Fade in while hovering */
+  opacity: 0.95;
+  transition-delay: 0;
+}
+
+/* tab footer  */
+/*div.footer {
+    position: fixed;
+    top: auto;
+    left: auto;
+    right: 20px;
+    bottom: 20px;
+    font-style: italic;
+    text-align: right;
+    color: grey;
+}
