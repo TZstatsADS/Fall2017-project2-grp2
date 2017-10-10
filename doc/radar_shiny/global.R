@@ -53,3 +53,17 @@ df$a2 <- 0.4 * cos(df$degree * pi / 180) # 40% ring y
 df$o1 <- 0.2 * sin(df$degree * pi / 180) # 20% ring x
 df$a1 <- 0.2 * cos(df$degree * pi / 180) # 20% ring y
 
+#############
+## Borough
+#############
+
+br.df<-read.csv("D:/3rd Semester/GR5243 Applied Data Science/proj 2/HS_loc_with_borough.csv",header = T,as.is = T)
+br.df<-br.df[,-1:-2]
+br.name<-c("Manhattan","Brooklyn","Bronx","Queens","Staten Island")
+
+
+mht<-br.df[br.df$borough==br.name[1],1]
+brkl<-br.df[br.df$borough==br.name[2],1]
+brx<-br.df[br.df$borough==br.name[3],1]
+qs<-br.df[br.df$borough==br.name[4],1]
+sti<-br.df[br.df$borough==br.name[5],1]
