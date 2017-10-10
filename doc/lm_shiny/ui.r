@@ -16,23 +16,28 @@ header <- dashboardHeader(title="test")
 sidebar <- dashboardSidebar()
 
 body <- dashboardBody(
+  tags$head(tags$style(HTML('.info-box {min-height: 175px;}
+                             .info-box-icon {height: 175px; line-height: 175px;}
+                            '))),
   fluidRow(
     box(width = 12,status = "warning",
         title=h2("How do the survey results relate to the graduation rate & college enrollment rate?"))
   ),
   fluidRow(
-    box(width=6, 
-        selectInput(inputId = "y", label = "Y axis: Please select graduation rate or college enrollment rate.",
+    box(width=4, height=120,status = "info",
+        selectInput(inputId = "y", label = "Y axis: Select graduation % or college enrollment %.",
                     choices = list("Graduation Rate, 4 year" = "Graduate_Pct",
                                    "Postsecondary Enrollment Rate, 6 months After High School"="Postsecondary_Enrollment_Pct"), 
                     selected = "Graduate_Pct", multiple=FALSE)
     ),
-    box(width=6,
+    box(width=4,height=120,status = "danger",
         selectInput(inputId = "x1", label = "X axis: Select the category of survey questions.",
                     choices = list("Rigorous Instruction"=1,"Collaborative Teachers"=2,
                                    "Supportive Environment"=3,"Effective School Leadership"=4,
                                    "Strong Family-Community Ties"=5,"Trust"=6), 
-                    selected = 1, multiple=FALSE),
+                    selected = 1, multiple=FALSE)
+        ),
+    box(width=4,height=120,status = "danger",
         conditionalPanel(condition = "input.x1 == 1",
                          selectInput(inputId = "x21", 
                                      label = "X axis: Select a survey result",
@@ -91,13 +96,12 @@ body <- dashboardBody(
     )#box
   ),
   fluidRow(
-    column(width=9,
+    column(width=8,
            box(width = NULL, plotOutput(outputId = "lmPlot"))
     ),
-    column(width=3,
+    column(width=4,
            infoBoxOutput(width = NULL, outputId = "y_value"),
-           infoBoxOutput(width = NULL, outputId = "x_value"),
-           infoBoxOutput(width = NULL, outputId = "additional_info")
+           infoBoxOutput(width = NULL, outputId = "x_value")
     )
   ),
   fluidRow(

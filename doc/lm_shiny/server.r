@@ -269,7 +269,7 @@ shinyServer(function(input, output) {
       else if(p_val<=0.01){"Significantly correlated"}
       else if(p_val<=0.05){"Somewhat significantly correlated"}
       else {"Not significantly correlated"},
-      subtitle = paste("Based on the regression analysis, p value is",format(p_val, scientific=F),"for",x_colname),
+      subtitle = paste("Based on the regression analysis, p value is",format(p_val, scientific=F,digits=3),"for",x_colname),
       color = if (p_val<=0.001){"green"}
       else if(p_val<=0.01){"olive"}
       else if(p_val<=0.05){"yellow"}
