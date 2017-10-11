@@ -1,33 +1,30 @@
 # Project 2: Open Data App - an RShiny app development project
 
-### [Project Description](doc/project2_desc.md)
-
-![screenshot](doc/screenshot2.png)
-
-In this second project of GU4243/GR5243 Applied Data Science, we develop an *Exploratory Data Analysis and Visualization* shiny app on a topic of your choice using U.S. government open data released on the [data.gov](https://data.gov/) website. See [Project 2 Description](doc/project2_desc.md) for more details.  
-
-The **learning goals** for this project is:
-
-- business intelligence for data science
-- data cleaning
-- data visualization
-- systems development/design life cycle
-- shiny app/shiny server
-
-*The above general statement about project 2 can be removed once you are finished with your project. It is optional.
-
-## Project Title Lorem ipsum dolor sit amet
+## Project Title: NYC High Schools
 Term: Fall 2017
 
-+ Team #
-+ **Projec title**: + Team members
-	+ team member 1
-	+ team member 2
-	+ team member 3
-	+ team member 4
-	+ team member 5
++ Group 2
++ **NYC High Schools**: + Team members
+	+ Xin Luo
+	+ Qingyun Lu
+	+ Yijia Li
+	+ Saaya Yasuda
+	+ Enrique Olivo
 
-+ **Project summary**: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
++ **Project summary**: We developed this app using R Shiny to help parents decide where to send their children to high school in New York City. In this app, users can compare high schools with one another and can, thus, find the best school on the basis of what they value the most, including school location, teacher performance, student achievement, and other factors. Our app makes it easier for users to understand the relative strengths and weaknesses of each school through data visualization (in the form of maps, scatter plots, bar charts, pie charts, and radar charts). We used a specific dataset (“2014-2015 School Quality Reports Results for High Schools”) from data.gov. The dataset includes information pertaining to categories like enrollment, diversity, graduation rate, post-secondary enrollment status, SAT scores, ACT scores, regents scores, and school framework survey results for a total of 847 high schools in New York City from 2014 to 2015.
+
++ **App link**: 
+
++ **Project screenshots**: 
+
++ Page 1. Search for your ideal school.
++ Tab 1. Find schools on the map on the basis of zip code and total student number, and see your selected school’s detailed information regarding, for example, diversity, post-secondary enrollment status, and SAT scores.
++ Tab 2. Select a school you are interested in and see its location on the map and its detailed information.
++ Tab 3. Select a school you are interested in and see the school’s overall framework survey performance compared to other schools in its borough or in the city as a whole.
++ Page 2. Use radar charts to compare any two schools’ relative strengths and weaknesses.
++ Page 3. Rank the schools on the basis of factors you care about the most and see the top 10 results.
++ Page 4. Look into how a school’s framework survey performance is related to the school’s graduation rate and college-enrollment rate, select the features you like, and see whether they are significantly correlated.
++ Page 5. Select the three factors most important to you and then calculate (from 1 to 10) the importance of each factor in order to identify the corresponding top five schools.
 
 + **Contribution statement**: ([default](doc/a_note_on_contributions.md)) All team members contributed equally in all stages of this project. All team members approve our work presented in this GitHub repository including this contributions statement. 
 
