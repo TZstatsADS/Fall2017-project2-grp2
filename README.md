@@ -23,8 +23,9 @@ https://xinluohaha.shinyapps.io/shiny_app_final_version/
 + Tab 3. Select a school you are interested in and see the school’s overall framework survey performance compared to other schools in its borough or in the city as a whole.
 + Page 2. Use radar charts to compare any two schools’ relative strengths and weaknesses.
 + Page 3. Rank the schools on the basis of factors you care about the most and see the top 10 results.
-+ Page 4. Look into how a school’s framework survey performance is related to the school’s graduation rate and college-enrollment rate, select the features you like, and see whether they are significantly correlated.
-+ Page 5. Select the three factors most important to you and then calculate (from 1 to 10) the importance of each factor in order to identify the corresponding top five schools.
++ Page 4. Select the three factors most important to you and then calculate (from 1 to 10) the importance of each factor in order to identify the corresponding top five schools.
++ Page 5. Look into how a school’s framework survey performance is related to the school’s graduation rate and college-enrollment rate, select the features you like, and see whether they are significantly correlated.
+
 
 + **Contribution statement**: ([default](doc/a_note_on_contributions.md)) All team members contributed equally in all stages of this project. All team members approve our work presented in this GitHub repository including this contributions statement. 
 
