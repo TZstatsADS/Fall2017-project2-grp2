@@ -17,7 +17,7 @@ Term: Fall 2017
 https://xinluohaha.shinyapps.io/shiny_app_final_version/
 + **Project screenshots**: 
 
-![image](doc/Screen Shot.png)
+![screenshot](doc/Screen Shot.png)
 
 + **Project screenshots**: 
 
