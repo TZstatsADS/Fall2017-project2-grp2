@@ -4,13 +4,12 @@
 Term: Fall 2017
 
 + Group 2
-+ **NYC High Schools**: + Team members
-
-	+ 1 Li, Yijia yl3588@columbia.edu
-        + 2 Lu, Qingyun ql2273@columbia.edu
-        + 3 Luo, Xin xl2614@columbia.edu
-        + 4 Olivo, Enrique eco2121@columbia.edu
-        + 5 Yasuda, Saaya sy2569@columbia.edu
++ **NYC High Schools**:
+        + Xin Luo
+	+ Qingyun Lu 
+	+ Yijia Li
+	+ Saaya Yasuda
+	+ Enrique Olivo
 
 + **Project summary**: We developed this app using R Shiny to help parents decide where to send their children to high school in New York City. In this app, users can compare high schools with one another and can, thus, find the best school on the basis of what they value the most, including school location, teacher performance, student achievement, and other factors. Our app makes it easier for users to understand the relative strengths and weaknesses of each school through data visualization (in the form of maps, scatter plots, bar charts, pie charts, and radar charts). We used a specific dataset (“2014-2015 School Quality Reports Results for High Schools”) from data.gov. The dataset includes information pertaining to categories like enrollment, diversity, graduation rate, post-secondary enrollment status, SAT scores, ACT scores, regents scores, and school framework survey results for a total of 847 high schools in New York City from 2014 to 2015.
 
