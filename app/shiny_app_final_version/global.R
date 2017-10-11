@@ -12,7 +12,7 @@ library("shinyBS")
 library(dplyr)
 library(tibble)
 
-#load("all_shiny_data.RData")
+load("all_shiny_data.RData")
 # setwd('~/Desktop/[ADS]Advanced Data Science/Fall2017-project2-grp2/')
 loc_data<-read.csv("./data/HS_loc_with_borough.csv")
 HS_summary<-read.csv("./data/HS_Summary.csv")
@@ -32,8 +32,8 @@ language_learner<-HS_summary[,c("School.Name","Percent.English.Language.Learners
 teacher_expr<-HS_summary[,c("School.Name","Percent.of.teachers.with.3.or.more.years.of.experience")]
 
 ########## SAT data ###################
-# tidysat<-read.csv("./data/tidysat.csv")
-# sat_city<-read.csv("./data/sat_city.csv")
+tidysat<-read.csv("./data/tidysat.csv")
+sat_city<-read.csv("./data/sat_city.csv")
 
 
 ################ Colors #########################
@@ -257,7 +257,7 @@ make_radar<-function(school1,school2){
       p, 
       x = c(df$o5[i],0), 
       y = c(df$a5[i],0), 
-      evaluate = TRUE,
+      #evaluate = TRUE,
       line = list(color = "#d3d3d3", dash = "3px"),
       showlegend = FALSE
     )
@@ -315,7 +315,8 @@ make_radar<-function(school1,school2){
       xaxis =ax,
       yaxis = ax,
       legend=list(orientation = 'h'),
-      lot_bgcolor='rgb(254, 247, 234)',margin=m_radar
+      # lot_bgcolor='rgb(254, 247, 234)',
+      margin=m_radar
       )
   
   
@@ -505,7 +506,7 @@ trust.df <- merge(x = achievements, y = trust.df, by = "SchoolName", all.x = TRU
 ##############CALCULATER############
 vardata<-read.csv("./data/HS_var.csv")
 var2data<-read.csv("./data/HS_var2.csv")
-var2data<-cbind(Rank=rep(NA,487),var2data)
+#var2data<-cbind(Rank=rep(NA,487),var2data)
 rownames(vardata)<-vardata$School.Name
 vardata$School.Name<-c()
 

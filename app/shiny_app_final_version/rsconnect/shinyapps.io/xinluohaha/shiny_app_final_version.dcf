@@ -5,6 +5,6 @@ account: xinluohaha
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 224211
-bundleId: 1021944
+bundleId: 1022024
 url: https://xinluohaha.shinyapps.io/shiny_app_final_version/
-when: 1507747858.49788
+when: 1507750659.19371
