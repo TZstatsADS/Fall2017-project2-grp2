@@ -15,11 +15,10 @@ Term: Fall 2017
 
 + **App link**: 
 https://xinluohaha.shinyapps.io/shiny_app_final_version/
+
 + **Project screenshots**: 
 
 ![image](doc/screenshot.JPG)
-
-+ **Project screenshots**: 
 
 + Page 1. Intro Page.
 + Page 2. Search for your ideal school.
