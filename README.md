@@ -27,7 +27,7 @@ https://xinluohaha.shinyapps.io/shiny_app_final_version/
 + Page 5. Look into how a school’s framework survey performance is related to the school’s graduation rate and college-enrollment rate, select the features you like, and see whether they are significantly correlated.
 
 
-+ **Contribution statement**: ([default](doc/a_note_on_contributions.md)) All team members desgined the app. Xin Luo built the framework of shiny app, finished all works ralated to the map, made the summary plots/boxes for each school, and did the UI design for most tabs based on the works of all group members. All team members approve our work presented in this GitHub repository including this contributions statement. 
++ **Contribution statement**: ([default](doc/a_note_on_contributions.md)) All team members desgined the app. Xin Luo built the framework of shiny app, finished all works ralated to the map, made the summary plots/boxes for each school, and did the UI design for most tabs based on the works of all group members. Qingyun Lu worked on the Intro page and the comparison page and did the UI and Server for the two parts. Organized and analyzed the datasets related and designed the radar chart for school comparison. All team members approve our work presented in this GitHub repository including this contributions statement. 
 
 Following [suggestions](http://nicercode.github.io/blog/2013-04-05-projects/) by [RICH FITZJOHN](http://nicercode.github.io/about/#Team) (@richfitz). This folder is orgarnized as follows.
 
