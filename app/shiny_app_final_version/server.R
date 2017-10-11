@@ -853,10 +853,9 @@ function(input, output, session) {
     top5 = lapply(lst, `[`, lst$x %in% head(unique(lst$x),5))$ix
     vecnew = c(1,inputchoice+1)
     
-    var2data1<-var2data[top5,][vecnew]
-    var2data1$Rank<-1:nrow(var2data1)
-    var2data1
-    
+    df=var2data[top5,][vecnew]
+    df$Rank<-1:nrow(df)
+    df
   })
   
   
