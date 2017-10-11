@@ -29,7 +29,7 @@ body <- dashboardBody(
              tabPanel(strong(icon("bookmark-o"),"Intro"),div(id="bg",
                                                              absolutePanel(width=1200,left=50,right=30,
                                                                        h1("Project: an RShiny app development project"),
-                                                                       br(),
+                                                                      br(),
                                                                        h2("Summary"),
                                                                        p("This project explores and visualizes information of high schools in New York City by" ,tags$a(href="https://data.cityofnewyork.us/Education/2014-2015-School-Quality-Reports-Results-For-High-/vrfr-9k4d", "487 high schools data from 2014 to 2015 on NYC Open Data Portal"),". We created a Shiny App to help parents decide the ideal high school for their children in New York."),
                                                                        h2("Content"),
@@ -49,7 +49,9 @@ body <- dashboardBody(
                                                                        # br(),
                                                                        h4(strong(icon("line-chart"),"Statistical Analysis")),
                                                                        p("Look into how a school's framework survey performance is related to the school's graduation rate and college-enrollment rate, select the features you like, and see whether they are significantly correlated."),
-                                                                       br()
+                                                                      br()
+                                                                      # ,
+                                                                      # p("If you are running this app online, do not use the tab School Map, it doesn't works well online. I will recommend you run it locally",style="color:#ff4040;")
                                                              )
                                                              
                                                              )),
