@@ -16,6 +16,9 @@ Term: Fall 2017
 + **App link**: 
 https://xinluohaha.shinyapps.io/shiny_app_final_version/
 + **Project screenshots**: 
+![screenshot](doc/Screen Shot.png)
+
++ **Project screenshots**: 
 
 + Page 1. Search for your ideal school.
 + Tab 1. Find schools on the map on the basis of zip code and total student number, and see your selected school’s detailed information regarding, for example, diversity, post-secondary enrollment status, and SAT scores.
