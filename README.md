@@ -4,7 +4,8 @@
 Term: Fall 2017
 
 + Group 2
-+ NYC High Schools
++ **NYC High Schools**: + Team members
+
 	+ 1 Li, Yijia yl3588@columbia.edu
         + 2 Lu, Qingyun ql2273@columbia.edu
         + 3 Luo, Xin xl2614@columbia.edu
