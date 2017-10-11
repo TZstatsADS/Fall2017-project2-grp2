@@ -329,7 +329,7 @@ function(input, output, session) {
     output$show_6_m<-renderPlotly({
       
       plot_ly(df6, labels = ~Type, values = ~Number, type = 'pie',textposition = 'inside',
-              textinfo = 'label+percent',insidetextfont = list(color = '#FFFFFF'),mode='lines',marker=list(colors=col1)) %>%
+              textinfo = 'label+percent',insidetextfont = list(color = '#FFFFFF'),marker=list(colors=col1)) %>%
         layout(
           xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
           yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),margin=m)
@@ -337,7 +337,7 @@ function(input, output, session) {
     output$show_6_m1<-renderPlotly({
       
       plot_ly(df6, labels = ~Type, values = ~Number, type = 'pie',textposition = 'inside',
-              textinfo = 'label+percent',insidetextfont = list(color = '#FFFFFF'),mode='lines',marker=list(colors=col1)) %>%
+              textinfo = 'label+percent',insidetextfont = list(color = '#FFFFFF'),marker=list(colors=col1)) %>%
         layout(
           xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
           yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),margin=m)
