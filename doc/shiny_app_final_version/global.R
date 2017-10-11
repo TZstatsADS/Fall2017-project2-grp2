@@ -52,6 +52,29 @@ labels_all <- sprintf(
   
 )
 
+labels_all_new <- sprintf(
+  "<strong><font color=\"#00008b\" size=3>%s</font></strong><br/>
+  %s<br/> 
+  <strong>%g</strong> students<br/>
+  </i> <font color=\"#8b2323\"><i class=\"fa fa-users\"> Teachers with 3 or More Year Expr</i>: <strong>%s %%</strong></font></br>
+  <font color=\"#458b0\"><i class=\"fa fa-language\"> English Language Learner</i>: <strong>%s %%</strong></font></br>
+  <font color=\"#cd9b1d\"> <i class=\"fa fa-dollar\">  Economic Need Index</i>: <strong>%s %%</strong></font></br>
+  <font color=\"#104e8b\"> <i class=\"fa fa-wheelchair\"> Students with Disabilities</i>: <strong>%s %%</strong></font></br>
+  ",
+  data_merge$school.name,
+  as.character(data_merge$addr),
+  data_merge$Enrollment,
+  #icon("users"),
+  round(teacher_expr[,2],2)*100,
+  #icon("language"),
+  round(language_learner[,2],2)*100,
+  #icon("dollar"),
+  round(econ_need[,2],2)*100,
+  #icon("wheelchair"),
+  round(disability[,2],2)*100
+  
+) %>% lapply(htmltools::HTML)
+
 ########### After Grad ##############
 tidysixmonth<-read.csv("./data/tidysix.csv")
 tidyeighteenmonth<-read.csv("./data/tidyeighteen.csv")
@@ -78,9 +101,7 @@ cal_values<-function(df,School_name){
     rank_i=floor(nrow(df)-rank(df$ele_score))
     rank_i=paste(rank_i[which(df$School.Name==School_name)],"/","487",sep = "")
   }
-  # higher_t_city<-(df[df$School.Name==School_name,"School_per"]-df[df$School.Name==School_name,"City_per"])/df[df$School.Name==School_name,"City_per"]
-  # higher_t_boro<-(df[df$School.Name==School_name,"School_per"]-df[df$School.Name==School_name,"Boro_per"])/df[df$School.Name==School_name,"Boro_per"]
-  #higher_t_city<-(s_i-mean(df$ele_score))/mean(df$ele_score)
+  
   higher_t_city<-df[df$School.Name==School_name,"School_per"]
   higher_t_boro<-(s_i-mean(df$ele_score[df$borough==boro_i]))/mean(df$ele_score[df$borough==boro_i])
   if(length(higher_t_city)<1){
@@ -199,7 +220,7 @@ make_radar<-function(school1,school2){
   }
   score<-as.vector(score)
   
-  response<-rep(c("Rigorous","Collaborative Teacher","Supportive Environment","Leadership","Family-Community Tie","Trust"),487)
+  response<-rep(c("Rigorous","Collaborative Teachers","Supportive Environment","Leadership","Family-Community Tie","Trust"),487)
   
   schoolname<-Rigorous_instruction[,2]
   school<-rep(schoolname,each=6)
@@ -243,11 +264,11 @@ make_radar<-function(school1,school2){
   
   d<-df[c(1:6,1),]
   dd<-df[c(loc1:(loc1+5),loc1,loc2:(loc2+5),loc2),]
-  m <- list(
-    l = 30,
-    r = 20,
+  m_radar <- list(
+    l = 20,
+    r = 40,
     b = 0,
-    t = 0
+    t = 10
   )
   ax <- list(
     title = "",
@@ -293,7 +314,7 @@ make_radar<-function(school1,school2){
       xaxis =ax,
       yaxis = ax,
       legend=list(orientation = 'h'),
-      lot_bgcolor='rgb(254, 247, 234)',margin=m
+      lot_bgcolor='rgb(254, 247, 234)',margin=m_radar
       )
   
   

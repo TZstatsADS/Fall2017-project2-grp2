@@ -4,8 +4,7 @@ dirColors <-c("Approaching Target"="#595490", "Exceeding Target"="#527525", "Mee
               "Not Meeting Target"="#BA48AA","N/A"="#eead0e")
 
 function(input, output, session) {
-  # Define a reactive expression for the document term matrix
-  #zip_range<-c(as.integer(input$Zipcode)-1,as.integer(input$Zipcode),as.integer(input$Zipcode)+1)
+  
   df <- reactive({
     if(input$Zipcode!="All"){
       if(input$Near){
@@ -48,7 +47,8 @@ function(input, output, session) {
       leaflet(df_new)%>%
         addTiles()%>%
         addCircles(~lon, ~lat,popup=labels,label=~school.name,radius=~Enrollment/10,options=marker_opt,color="green",layerId=~school.name)%>%
-        setView(-73.983,40.7639,zoom = 12)
+        setView(-73.983,40.7639,zoom = 12)%>%
+        addProviderTiles(input$map_color)
     }else{
       leaflet(df_new)%>%
         addTiles()%>%
@@ -61,12 +61,9 @@ function(input, output, session) {
   observeEvent(input$map_color, {
     leafletProxy("map") %>% addProviderTiles(input$map_color)
   })
-  # observeEvent(input$Boro_map, {
-  #   leafletProxy("map") %>% hideGroup("Manhattan")
-  # })
-  # 
+ 
   
-  
+  ####################### OBSERVED EVENTS ####################### ####################### 
   observeEvent(input$School1,{
     
     eventid<-input$School1
@@ -101,7 +98,7 @@ function(input, output, session) {
     # if (is.null(event))
     #   return()
     if (is.null(event)){
-      event$id<-"School of the Future High School"
+      event$id<-"The High School of Fashion Industries"
       isolate({
         showratings(event$id)
         show_races(event$id)
@@ -133,8 +130,10 @@ function(input, output, session) {
         show_rating_hist(event$id)
         show_schoolname_tab_details(event$id)
         show_ranks(event$id)
+        #updateSelectInput(session ,"Boro1",selected=data_merge$borough[data_merge$school.name==event$id])
+        #updateSelectInput(session ,"School1",selected=event$id)
         updateSelectInput(session ,"school_name2",selected=event$id)
-        # updateSelectInput(session ,"Boro1",selected=data_merge$borough[data_merge$school.name==event$id])
+        
       })}
   })
   
@@ -157,10 +156,12 @@ function(input, output, session) {
       show_rating_hist(event$id)
       show_schoolname_tab_details(event$id)
       show_ranks(event$id)
+      updateSelectInput(session ,"school_name2",selected=event$id)
     })
   })
   
   
+  ############################################## FUNCTIONS FOR 1st TAB ####################### ####################### 
   #show the ui text
   showratings<-function(School.name){
     target_df<-data_merge%>%filter(school.name==School.name)
@@ -440,7 +441,8 @@ function(input, output, session) {
     if(eventid!=" "){
       if(eventid!=" "){
         if(!input$label_it){
-          leafletProxy("map") %>%clearMarkers()}
+          leafletProxy("map") %>%clearMarkers()
+          }
         df_target<-data_merge%>%filter(school.name==eventid)
         label_i<-labels_all[data_merge$school.name==input$school_name2]
         leafletProxy("map") %>%addMarkers(df_target$lon,df_target$lat,popup=label_i,layerId=df_target$school.name)%>%
@@ -451,6 +453,8 @@ function(input, output, session) {
       show_ranks(eventid)
     }
   })
+  observeEvent(input$label_it,{if(!input$label_it) leafletProxy("map") %>%clearMarkers()})
+  
   observeEvent(input$aspect,{
     eventid<-input$school_name2
     #show_schoolname_tab_details(eventid)
@@ -488,49 +492,49 @@ function(input, output, session) {
     })
     output$Rank_boro <- renderValueBox({
       valueBox(
-        ranks_data[3],paste(data_merge$borough[data_merge$school.name==input$school_name2]," Level") , icon = icon("map-signs"),
+        ranks_data[3],paste(data_merge$borough[data_merge$school.name==School.Name]," Level") , icon = icon("map-signs"),
         color = "yellow",width=3
       )
     })
     
   }
-  #######################  ####################### 
+  #######################  ####################### ####################### 
   ####second part for the HIST tab
-  selectedData1<-reactive({
-    HS_frame[,Aspects[input$aspect1][[1]]]
-  })
-  show_rating4search<-function(School.Name){
-    output$rating_hist1 <- renderPlotly({
-      #plot_scores(selectedData(),input$school_name,input$aspect)
-      if(is.na(selectedData1()[selectedData1()$School.Name==School.Name,4])){
-        plot_ly(x=selectedData1()[,4],type = "histogram")
-      }else{
-        plot_scores(selectedData1(),School.Name,input$aspect1)
-      }
-      
-    })
-    ranks_data1<-cal_values(selectedData1(),School.Name)
-    output$Rank1 <- renderValueBox({
-      valueBox(
-        ranks_data1[1],"Rank" , icon = icon("list"),
-        color = "purple",width=3
-      )
-    })
-    output$Rank_city1 <- renderValueBox({
-      valueBox(
-        ranks_data1[2],"City Level" , icon = icon("building-o"),
-        color = "blue",width=3
-      )
-    })
-    output$Rank_boro1 <- renderValueBox({
-      valueBox(
-        ranks_data1[3],"Borough Level" , icon = icon("bicycle"),
-        color = "yellow",width=3
-      )
-    })
-    
-    
-  }
+  # selectedData1<-reactive({
+  #   HS_frame[,Aspects[input$aspect1][[1]]]
+  # })
+  # show_rating4search<-function(School.Name){
+  #   output$rating_hist1 <- renderPlotly({
+  #     #plot_scores(selectedData(),input$school_name,input$aspect)
+  #     if(is.na(selectedData1()[selectedData1()$School.Name==School.Name,4])){
+  #       plot_ly(x=selectedData1()[,4],type = "histogram")
+  #     }else{
+  #       plot_scores(selectedData1(),School.Name,input$aspect1)
+  #     }
+  #     
+  #   })
+  #   ranks_data1<-cal_values(selectedData1(),School.Name)
+  #   output$Rank1 <- renderValueBox({
+  #     valueBox(
+  #       ranks_data1[1],"Rank" , icon = icon("list"),
+  #       color = "purple",width=3
+  #     )
+  #   })
+  #   output$Rank_city1 <- renderValueBox({
+  #     valueBox(
+  #       ranks_data1[2],"City Level" , icon = icon("building-o"),
+  #       color = "blue",width=3
+  #     )
+  #   })
+  #   output$Rank_boro1 <- renderValueBox({
+  #     valueBox(
+  #       ranks_data1[3],"Borough Level" , icon = icon("bicycle"),
+  #       color = "yellow",width=3
+  #     )
+  #   })
+  #   
+  #   
+  # }
   #######################  #######################  #######################  ####################### 
   ####################### Compare Schools ########################3
   output$plot_radar=renderPlotly({
@@ -586,7 +590,7 @@ function(input, output, session) {
     
     leaflet(data_merge)%>%
       addTiles()%>%
-      addMarkers(~lon, ~lat,popup=labels_all,label=~school.name,icon=list(iconUrl='icon/school-2.png',iconSize=c(18,18)),group=~borough,options=marker_opt,layerId=~school.name)%>%
+      addMarkers(~lon, ~lat,popup=labels_all_new,label=~school.name,icon=list(iconUrl='icon/school-2.png',iconSize=c(18,18)),group=~borough,options=marker_opt,layerId=~school.name)%>%
       addProviderTiles("OpenStreetMap.HOT")%>%
       addMarkers(df_new2$lon, df_new2$lat,popup=labels_i,label=df_new2$school.name,layerId=c("school1","school2"),options=marker_opt)%>%
       setView(mean(df_new2$lon),mean(df_new2$lat),zoom=12)
@@ -596,7 +600,7 @@ function(input, output, session) {
   output$Compare2school_SAT<-renderPlotly({
     df<-tidysat%>%
       filter(Name%in%c(input$radar_school1,input$radar_school2))
-    m <- list(
+    m_sat <- list(
       l = 20,
       r = 20,
       b = 30,
@@ -613,7 +617,7 @@ function(input, output, session) {
       add_trace(y =~Score,x=~Sub,data=df%>%filter(Name==input$radar_school1),type = "bar",name=input$radar_school1,marker=list(color = "#20b2aa"))%>%
       add_trace(y =~Score,x=~Sub,data=df%>%filter(Name==input$radar_school2),type = "bar",name=input$radar_school2,marker=list(color="#b0c4de"))%>%
       layout(yaxis = ax, xaxis =list(title=""),height=250,
-             barmode = 'group',legend=list(orientation = 'h'),margin=m)
+             barmode = 'group',legend=list(orientation = 'h'),margin=m_sat)
     
     
   })
@@ -830,8 +834,10 @@ function(input, output, session) {
   )
   
   output$lm_title<-renderUI({
-    sprintf(
-      "%s <strong><font color=\"#1a1a1a\" size=>How do the survey results relate to the graduation rate & college enrollment rate?</font>",icon("comments-o","fa-3x"))%>%lapply(htmltools::HTML)
+    h3(icon("comments"),"How do the survey results relate to the graduation rate & college enrollment rate?")
+    # sprintf(
+    #   
+    #   "<strong>%s <font color=\"#1a1a1a\" size=4>How do the survey results relate to the graduation rate & college enrollment rate?</font></strong>",icon("comments-o","fa-3x"))%>%lapply(htmltools::HTML)
   })
   
   ############# CALCULATOR #########

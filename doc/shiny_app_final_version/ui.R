@@ -29,6 +29,7 @@ body <- dashboardBody(
              tabPanel(strong(icon("bookmark-o"),"Intro"),div(id="bg",
                                                              absolutePanel(width=1200,left=50,right=30,
                                                                        h1("Project: an RShiny app development project"),
+                                                                       br(),
                                                                        h2("Summary"),
                                                                        p("This project explores and visualizes information of high schools in New York City by" ,tags$a(href="https://data.cityofnewyork.us/Education/2014-2015-School-Quality-Reports-Results-For-High-/vrfr-9k4d", "487 high schools data from 2014 to 2015 on NYC Open Data Portal"),". We created a Shiny App to help parents decide the ideal high school for their children in New York."),
                                                                        h2("Content"),
@@ -36,16 +37,16 @@ body <- dashboardBody(
                                                                        p("   -  ", strong(icon("home")," Main"),": Find schools on the map on the basis of zip code and total student number, and see your selected school's detailed information regarding, for example, diversity, post-secondary enrollment status and SAT scores."),
                                                                        p("   -  ", strong(icon("search"),"Find Schools"),": Select a school you are interested in and see its location on the map and its detailed information."),
                                                                        p("   -  ", strong(icon("info-circle"),"Details for Summary Items"),": Select a school you are interested in and see the school's overall framework survey performance compared to other schools' in its borough or in the city as a whole."),
-                                                                       br(),
+                                                                       # em(),
                                                                        h4(strong(icon("balance-scale")," Compare 2 Schools")),
                                                                        p("Use radar charts to compare any two schools' relative strengths and weaknesses."),
-                                                                       br(),
+                                                                       # br(),
                                                                        h4(strong(icon("star"),"Rank")),
                                                                        p("Rank the schools on the basis of factors you care about the most and see the top 10 results."),
-                                                                       br(),
+                                                                       # br(),
                                                                        h4(strong(icon("calculator"),"Calculator")),
-                                                                       p("select factor you consider most important and according to the weights your give, we will calculate the top schools for you."),
-                                                                       br(),
+                                                                       p("Select the three factors most important to you and then calculate (from 1 to 10) the importance of each factor in order to identify the corresponding top five schools."),
+                                                                       # br(),
                                                                        h4(strong(icon("line-chart"),"Statistical Analysis")),
                                                                        p("Look into how a school's framework survey performance is related to the school's graduation rate and college-enrollment rate, select the features you like, and see whether they are significantly correlated."),
                                                                        br()
@@ -78,7 +79,10 @@ body <- dashboardBody(
                                 
                                 
                                 column(width = 8,
-                                       div(leafletOutput("map", height = 380))
+                                       div(leafletOutput("map", height = 380),
+                                           absolutePanel(id="controls",top = 330,left=40,draggable = T,height = 40,
+                                                         checkboxInput("label_it", "Label The Schools On Map",T))
+                                           )
                                 )
                                 ,
                                 absolutePanel(right=20,width = 200,
@@ -161,8 +165,10 @@ body <- dashboardBody(
                                                                            ),status = "warning",
                                                          column(width=6,
                                                                 uiOutput("School_1")
-                                                                ),
-                                                         column(width=4,checkboxInput("label_it", "Label The Schools On Map",T)))
+                                                                )
+                                                         # ,
+                                                         # column(width=4,checkboxInput("label_it", "Label The Schools On Map",T))
+                                                         )
                                                      
                                                    ),
                                                    fluidRow(
@@ -227,7 +233,7 @@ body <- dashboardBody(
                                                    fluidRow(
                                                      
                                                      box(width=NULL,
-                                                         column(width=6,selectInput('aspect', strong(icon("search"),'Select a Item'),names(Aspects),
+                                                         column(width=6,selectInput('aspect', strong(icon("search"),'Select a Assessment Item'),names(Aspects),
                                                                                     selected=names(Aspects)[1]))
                                                          #)
                                                          ,
@@ -295,7 +301,7 @@ body <- dashboardBody(
                                     , draggable = T,top = 120, left = "auto", right = 50, bottom = "auto", width = 350,
                                     height = 'auto',
                                     #column(width=6,
-                                    h4(strong("Radar Plot for 6 Quantative Assessments",style="color:grey;")),
+                                    h4(strong("Radar Plot for 6 Qualitative Assessments",style="color:grey;")),
                                     plotlyOutput("plot_radar",height = 400)
                                     
                                     #)
@@ -323,9 +329,14 @@ body <- dashboardBody(
                                      ),
                                      
                                      tabPanel(strong(icon("trophy"),"Academic Performance"),
+                                              #absolutePanel(draggbale=T,left=10,bottom = 10,up=10,
+
+                                              #),
+                                              
                                               tabsetPanel(tabPanel("<font color=grey>Math</font>"%>%lapply(htmltools::HTML),
                                                                    tabItem(tabName="Mathyo",
                                                                            h1("Performance in", tags$b("Mathematics")),
+                                                                           tags$p("The percent score for each school represents the average of each of its student's cumulative performance in the given subject (final exam, homeworks, etc). These scores are interpreted as percentages because the NYC Department of Education mandates percent scores for high school students, as opposed to GPAs on a 4.0 scale."),
                                                                            tags$br(),
                                                                            fluidRow(
                                                                              dataTableOutput("datarankedmath")
@@ -335,6 +346,8 @@ body <- dashboardBody(
                                                           tabPanel("<font color=grey>English</font>"%>%lapply(htmltools::HTML),
                                                                    tabItem(tabName="Englishyo",
                                                                            h1("Performance in", tags$b("English")),
+                                                                           tags$p("The percent score for each school represents the average of each of its student's cumulative performance in the given subject (final exam, homeworks, etc). These scores are interpreted as percentages because the NYC Department of Education mandates percent scores for high school students, as opposed to GPAs on a 4.0 scale."),
+                                                                           
                                                                            tags$br(),
                                                                            fluidRow(
                                                                              dataTableOutput("datarankedenglish")
@@ -345,6 +358,8 @@ body <- dashboardBody(
                                                           tabPanel("<font color=grey>History</font>"%>%lapply(htmltools::HTML),
                                                                    tabItem(tabName="Historyyo",
                                                                            h1("Performance in", tags$b("History")),
+                                                                           tags$p("The percent score for each school represents the average of each of its student's cumulative performance in the given subject (final exam, homeworks, etc). These scores are interpreted as percentages because the NYC Department of Education mandates percent scores for high school students, as opposed to GPAs on a 4.0 scale."),
+                                                                           
                                                                            tags$br(),
                                                                            fluidRow(
                                                                              dataTableOutput("datarankedhistory")
@@ -354,6 +369,8 @@ body <- dashboardBody(
                                                           ),
                                                           tabPanel("<font color=grey>Science</font>"%>%lapply(htmltools::HTML),
                                                                    h1("Performance in", tags$b("Science")),
+                                                                   tags$p("The percent score for each school represents the average of each of its student's cumulative performance in the given subject (final exam, homeworks, etc). These scores are interpreted as percentages because the NYC Department of Education mandates percent scores for high school students, as opposed to GPAs on a 4.0 scale."),
+                                                                   
                                                                    tags$br(),
                                                                    fluidRow(
                                                                      dataTableOutput("datarankedscience")
@@ -362,6 +379,8 @@ body <- dashboardBody(
                                                           ),
                                                           tabPanel("<font color=grey>All Subjects</font>"%>%lapply(htmltools::HTML),
                                                                    h1("Performance in", tags$b("All Subjects")),  
+                                                                   tags$p("The percent score for each school represents the average of each of its student's cumulative performance in the given subject (final exam, homeworks, etc). These scores are interpreted as percentages because the NYC Department of Education mandates percent scores for high school students, as opposed to GPAs on a 4.0 scale."),
+                                                                   
                                                                    fluidRow(
                                                                      dataTableOutput("datarankedallsubjects")
                                                                      
@@ -370,7 +389,7 @@ body <- dashboardBody(
                                      )
                                      ,
                                      #"<font size=3>Header</li>"%>%lapply(htmltools::HTML),
-                                     tabPanel(strong(icon("thumbs-up"),"Quantative Assessment"),
+                                     tabPanel(strong(icon("thumbs-up"),"Qualitative Assessment"),
                                               tabsetPanel(
                                                 tabPanel("<font color=grey>Rigorous</br>Instruction</font>"%>%lapply(htmltools::HTML),
                                                          h1("Performance in", tags$b("Rigorous Instruction")),
@@ -481,7 +500,7 @@ body <- dashboardBody(
                         ))
              ),tabPanel(strong(icon("calculator"), "Calculator"),div(id="bg",
                     absolutePanel(width=1200,left=50,right=50,top=60,
-                        h2(strong("Select the 3 Factors you care and see the Top Schools"),icon("hand-peace-o")),
+                        h2(strong("Select the 3 Factors you care and see the Top Schools"),icon("trophy")),
                         fluidRow(
                           column(3, selectInput("choice1", strong(icon("hand-o-right"),"Select the 1st factor:"),
                                                 choices = c("Graduation Rate","College Enrollment Rate","Teacher Experience","Rigorous Instruction","Collaborative Teachers","Supportive Environment","Effective School Leadership","Strong Family-Community Ties","Trust"),
@@ -513,7 +532,8 @@ body <- dashboardBody(
                       fluidRow(
                      
                         column(width =11,status = "warning",
-                            h3(icon("comments-o"),"How do the Survey Results relate to the Graduation Rate & College Enrollment Rate?",style="strong")
+                               br(),
+                            h3(strong(icon("comments-o"),"How do the Survey Results relate to the Graduation Rate & College Enrollment Rate?"))
                             
                       )),
                       fluidRow(p(" ")),
