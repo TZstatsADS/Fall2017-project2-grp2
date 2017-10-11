@@ -12,7 +12,8 @@ library("shinyBS")
 library(dplyr)
 library(tibble)
 
-setwd('~/Desktop/[ADS]Advanced Data Science/Fall2017-project2-grp2/')
+#load("all_shiny_data.RData")
+# setwd('~/Desktop/[ADS]Advanced Data Science/Fall2017-project2-grp2/')
 loc_data<-read.csv("./data/HS_loc_with_borough.csv")
 HS_summary<-read.csv("./data/HS_Summary.csv")
 HS_frame<-read.csv("./data/HS_frame.csv")
@@ -31,8 +32,8 @@ language_learner<-HS_summary[,c("School.Name","Percent.English.Language.Learners
 teacher_expr<-HS_summary[,c("School.Name","Percent.of.teachers.with.3.or.more.years.of.experience")]
 
 ########## SAT data ###################
-tidysat<-read.csv("./data/tidysat.csv")
-sat_city<-read.csv("./data/sat_city.csv")
+# tidysat<-read.csv("./data/tidysat.csv")
+# sat_city<-read.csv("./data/sat_city.csv")
 
 
 ################ Colors #########################
