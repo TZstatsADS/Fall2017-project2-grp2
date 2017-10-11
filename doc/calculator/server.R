@@ -1,8 +1,9 @@
 library(shiny)
 library(shinydashboard)
 
-vardata<-read.csv("../data/HS_var.csv")
-var2data<-read.csv("../data/HS_var2.csv")
+setwd("~/Desktop/[ADS]Advanced Data Science/Fall2017-project2-grp2/")
+vardata<-read.csv("./data/HS_var.csv")
+var2data<-read.csv("./data/HS_var2.csv")
 rownames(vardata)<-vardata$School.Name
 vardata$School.Name<-c()
 

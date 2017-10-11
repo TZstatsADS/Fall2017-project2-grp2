@@ -1,5 +1,5 @@
 rm(list=ls())
-setwd('/Users/syasuda/Documents/GitHub/Fall2017-project2-grp2')
+setwd('~/Desktop/[ADS]Advanced Data Science/Fall2017-project2-grp2')
 
 # install & load necessary packages
 packages.used=c("shiny","readxl","ggplot2","shinydashboard","readr")
