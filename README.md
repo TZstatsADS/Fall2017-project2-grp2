@@ -4,8 +4,7 @@
 Term: Fall 2017
 
 + Group 2
-+ **NYC High Schools**:
-        
++ **NYC High Schools**: + Team members
         + Xin Luo
         + Qingyun Lu 
         + Yijia Li
