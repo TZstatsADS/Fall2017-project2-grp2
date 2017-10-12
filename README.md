@@ -19,6 +19,7 @@ https://xinluohaha.shinyapps.io/shiny_app_final_version/
 + **Project screenshots**: 
 
 ![image](doc/screenshot.JPG)
+
 ![image](doc/screenshot-compare-tab.PNG)
 
 + Page 1. Intro Page.
